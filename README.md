@@ -1,6 +1,10 @@
 # Java Rule Book
 Basic concepts of Java to answer any question about how Java works specially in job interviews. With combining multiple rules you can answer many java question
 
+**Feel free to correct any rule or to suggest any correction needed.**
+
+[![Donate to author](https://www.paypalobjects.com/webstatic/en_US/btn/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQJAX48SPUKNC)
+
 ##Rules (upto Java 7)
 
 ####Concrete class
