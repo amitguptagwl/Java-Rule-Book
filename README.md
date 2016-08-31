@@ -14,40 +14,43 @@ Basic concepts of Java to answer any question about how Java works specially in 
 8. All classes has default constructor, with no statement inside, by default until you create any constructor manually.
 
 ####Interface
-1. It has final static member fields.
-2. There is no functionality/implementation, but responsibilities, to be implemented by child class type (class itself or its parent class). So implicitly abstract and modifier is optional.
-3. Can extend only 1 interface.
+1. Are made for public. So the interface itself and its method are required to be public.
+2. Interfaces can't be static but it's all member fields are final static.
+3. Methods are public only and can’t be static.
+4. There is no functionality/implementation, but responsibilities, to be implemented by child class type (class itself or its parent class). So implicitly *abstract* keyword and modifier are optional.
+5. Can extend only 1 interface.
 
 #####Common Rules for Concrete class and Interface
 1. Cannot extend/implement itself or one of its own member types. If it inherits itself it creates Cycle. If it inherits any child then its hierarchy in inheritance tree becomes inconsistent.
 2. Represent the type of its child, sub-child and so on.
 
 ####Abstract class
-1. Like any simple java class, it may have simple member , static member, static block etc. It can extend/implement any concrete class, abstract class, or an interface.
-2. Abstract class cannot be instantiated.
-3. Abstract method has no functionality. Thus it must be overridden by child class. Method signature can have return type, public/protected/default modifier, and abstract keyword (static and final keywords are not allowed)
+1. Concrete class + Interface = Abstract class
+ * Unlike concrete class, it can’t be instantiated.
+ * Unlike interface, abstract methods can have any scope and *abstract* keyword is not optional.
+ * Unlike interface, fields can’t be static and final.
+
+(Like any simple java class, it may have simple member , static member, static block, constructor etc. It can extend/implement any concrete class, abstract class, or an interface.)
 
 #####Common Rules for Abstract class and Interface
 1. Both can have 0 to N number of abstract methods.
 2. Both need not to implement abstract methods declared in their parent abstract class/interface.
 
 ####Final
-1. final class cannot be inherited.
-2. final method cannot be overridden.
-3. Value of final variable cannot be changed. And it must be instantiated at declaration time.
-4. Final class members must be instantiated at the time of declaration or in construct.
-5. JVM allocates same memory location for same constants.
+1. Final stops any change in rule/method or value
+ a. Since the value of a final variable can’t be changed. It should be assigned either the time of declaration or in constructor.
+2. JVM allocates same memory location for same constants.
 
 ####Static
-1. "There is functionality even if you don't have an object instance".
+1. Static members belongs to a class not any instance.
+ a. Static member doesn’t belong to any instance hence they can’t access instanced members.
 2. One per class. Shared among all class instances. 
-3. Static method/element can access static elements only.
-4. Can’t be overridden. But are inherited.
+ a. Can’t be overridden. But are inherited.
 
 
 ####Nested/inner class
 1. Can access all members of container class.
-2. An independent class inside a class which follows rule of a class member. Concrete class rule 5 (So it can be abstract, static abstract, static)
+2. ~~An independent class inside a class which follows rule of a class member.~~ Concrete class rule 5 (So it can be abstract, static abstract, static)
 
 
 ####Anonymous class
@@ -68,7 +71,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 
 ####Serialization
 1. Transient and static variables are skipped while serialization/deserialization.
-2. In alternate of Transient, a class can have ObjectStreamField[] serialPersistentFields of class members which can be serialized.
+2. In alternate of Transient, a class can have *ObjectStreamField[] serialPersistentFields* of class members which can be serialized.
 3. While Serialization all default constructor of super classes are called. But deserialization calls default constructor of all non-serialized class from top of inheritance tree till it meets any serialized class. In addition, deserialization 3. doesn’t call constructor of current class.
 4. At the time of deserialization, first empty constructor gets called then all deserialized values are assigned to relevant property.
 
@@ -78,7 +81,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 3. synchronized methodName(… takes lock current object.
 
 ####Exception
-1. try must be followed by either catch or finally or both
+1. **try** must be followed by either **catch** or **finally** or both
 2. finally is called ever.
 3. Only 1 catch block is called start from top to bottom.
 
