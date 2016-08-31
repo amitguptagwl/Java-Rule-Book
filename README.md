@@ -1,5 +1,5 @@
 # Java Rule Book
-Basic concepts of Java to answer any question about how Java works specially in job interviews
+Basic concepts of Java to answer any question about how Java works specially in job interviews. With combining multiple rules you can answer many java question
 
 ##Rules (upto Java 7)
 
