@@ -19,8 +19,8 @@ Basic concepts of Java to answer any question about how Java works specially in 
 
 ####Interface
 1. Are made for public. So the interface itself and its method are required to be public.
-2. Interfaces can't be static but it's all member fields are final static.
-3. Methods are public only and can’t be static.
+2. It's all member fields are **final** (since interfance can't be instanciated they can have only 1 value) **static** (since interfance can't be instanciated and member field are not the responsibilities for other class).
+3. Methods are public only and can’t be static. (Interface defines external responsibilities (hence public) which may be different for each class (hence non-static).)
 4. There is no functionality/implementation, but responsibilities, to be implemented by child class type (class itself or its parent class). So implicitly *abstract* keyword and modifier are optional.
 5. Can extend only 1 interface.
 
