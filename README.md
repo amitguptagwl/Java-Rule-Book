@@ -7,6 +7,16 @@ Basic concepts of Java to answer any question about how Java works specially in 
 
 ##Rules (upto Java 7)
 
+####Final
+1. No further change ( So should be assigned either the time of declaration or in constructor)
+2. JVM allocates same memory location for same constants.
+
+####Static
+1. Static members belongs to a class not any instance.
+ a. Static member doesn’t belong to any instance hence they can’t access instanced members.
+2. One per class. Shared among all class instances. 
+ a. Can’t be overridden. But are inherited.
+
 ####Concrete class
 1. All methods have some functionality.
 2. cannot be static
@@ -38,18 +48,6 @@ Basic concepts of Java to answer any question about how Java works specially in 
 #####Common Rules for Abstract class and Interface
 1. Both can have 0 to N number of abstract methods.
 2. Both need not to implement abstract methods declared in their parent abstract class/interface.
-
-####Final
-1. Final stops any change in rule/method or value
- a. Since the value of a final variable can’t be changed. It should be assigned either the time of declaration or in constructor.
-2. JVM allocates same memory location for same constants.
-
-####Static
-1. Static members belongs to a class not any instance.
- a. Static member doesn’t belong to any instance hence they can’t access instanced members.
-2. One per class. Shared among all class instances. 
- a. Can’t be overridden. But are inherited.
-
 
 ####Nested/inner class
 1. Can access all members of container class.
