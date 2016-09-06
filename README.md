@@ -53,10 +53,9 @@ Basic concepts of Java to answer any question about how Java works specially in 
 1. Can access all members of container class.
 2. ~~An independent class inside a class which follows rule of a class member.~~ Concrete class rule 5 (So it can be abstract, static abstract, static)
 
-
-####Anonymous class
-1. Cannot be implemented by any class
-2. Can access only final external object/var.
+####Anonymous class (closures)
+1. Cannot be implemented by any class (as created dynamically)
+2. Can access only final external object/var. (as the values of non-final variable can be changed, the behaviour of annonymous class will be unpredictable.)
 
 ####Inheritance
 1. A class/interface can reference its own instance or any child class instance whichever can be instantiated.
@@ -83,7 +82,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 
 ####Exception
 1. **try** must be followed by either **catch** or **finally** or both
-2. finally is called ever.
+2. finally is always called.
 3. Only 1 catch block is called start from top to bottom.
 
 ####String
