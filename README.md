@@ -18,11 +18,10 @@ Basic concepts of Java to answer any question about how Java works specially in 
 8. All classes has default constructor, with no statement inside, by default until you create any constructor manually.
 
 ####Interface
-1. Are made for public. So the interface itself and its method are required to be public.
-2. It's all member fields are **final** (since interfance can't be instanciated they can have only 1 value) **static** (since interfance can't be instanciated and member field are not the responsibilities for other class).
-3. Methods are public only and can’t be static. (Interface defines external responsibilities (hence public) which may be different for each class (hence non-static).)
-4. There is no functionality/implementation, but responsibilities, to be implemented by child class type (class itself or its parent class). So implicitly *abstract* keyword and modifier are optional.
-5. Can extend only 1 interface.
+1. It's all member fields are **public** (since has no implementation private fields can't be used), **final** (since interfance can't be instanciated they can have only 1 value) **static** (since interfance can't be instanciated and member field are not the responsibilities for other class).
+2. Methods are public only and can’t be static. (Interface defines external responsibilities (hence public) which may be different for each class (hence non-static).)
+3. There is no functionality/implementation, but responsibilities, to be implemented by child class type (class itself or its parent class). So implicitly *abstract* keyword and modifier are optional.
+4. Can extend only 1 interface.
 
 #####Common Rules for Concrete class and Interface
 1. Cannot extend/implement itself or one of its own member types. If it inherits itself it creates Cycle. If it inherits any child then its hierarchy in inheritance tree becomes inconsistent.
