@@ -63,6 +63,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 5. Super() must be first statement in child class constructor. If you don’t call super() explicitly, compiler automatically adds empty super().
 6. Members can have same name or method signature. In case of ambiguity, *this* is used to represent current class' members and super is used to represent members of parent class. Otherwise the closest declaration will be referred.
 7. Until or unless there is no ambiguity of method's declaration inheritance is allowed. (Hence a class can't extend multiple classes but can implement multiple interfaces. Similarly it can extend a class and implement an interface which has methods with same signature.)
+8. Child class can't narrow down the scope of method while overriding. (A subclass should always satisfy the contract of the superclass. See Liskov Substitution principle.)
 
 ####Garbage Collector
 1. It fragment and release only heap memory not stack memory.
