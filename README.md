@@ -22,9 +22,8 @@ Basic concepts of Java to answer any question about how Java works specially in 
 2. cannot be static
 3. Constructor gets called after initializing memory by JVM.
 4. Declaration of any member is fully independent from any other class/interface.
-5. You can extend 1 class but multiple interfaces.
-6. Can have static member and static block which are executed first in the class and top to bottom.
-7. All classes has default constructor, with no statement inside, by default until you create any constructor manually.
+5. Can have static member and static block which are executed first in the class and top to bottom.
+6. All classes has default constructor, with no statement inside, by default until you create any constructor manually.
 
 ####Interface
 1. It's all member fields are **public** (since has no implementation private fields can't be used), **final** (since interfance can't be instanciated they can have only 1 value) **static** (since interfance can't be instanciated and member field are not the responsibilities for other class).
@@ -63,6 +62,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 4. Child class need not to throw an exception while overriding a method, it is automatically get thrown by child class method.
 5. Super() must be first statement in child class constructor. If you don’t call super() explicitly, compiler automatically adds empty super().
 6. Members can have same name or method signature. In case of ambiguity, *this* is used to represent current class' members and super is used to represent members of parent class. Otherwise the closest declaration will be referred.
+7. Until or unless there is no ambiguity of method's declaration inheritance is allowed. (Hence a class can't extend multiple classes but can implement multiple interfaces. Similarly it can extend a class and implement an interface which has methods with same signature.)
 
 ####Garbage Collector
 1. It fragment and release only heap memory not stack memory.
