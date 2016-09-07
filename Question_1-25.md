@@ -1,4 +1,4 @@
-**Q1. A parent class has 2 variables final int a = 20; static int b; and child class has 2 variables with same name int a, b;. **
+**Q1. A parent class has 2 variables final int a = 20; static int b; and child class has 2 variables with same name int a, b;.**
 <br/>Can I change value of a? 
 <br/>What would be the value of b among all instances of child class?
 
