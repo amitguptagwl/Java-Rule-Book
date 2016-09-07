@@ -1,49 +1,49 @@
-**Q1. A parent class has 2 variables final int a = 20; static int b; and child class has 2 variables with same name int a, b;. 
+**Q1. A parent class has 2 variables final int a = 20; static int b; and child class has 2 variables with same name int a, b;. **
 <br/>Can I change value of a? 
-<br/>What would be the value of b among all instances of child class?**
+<br/>What would be the value of b among all instances of child class?
 
-Ans.
-<br/>As per Concrete class Rule, if we don’t use super.a explicitly then it’ll refer member a of child class which is not final so it is changeable.
-<br/>As per Inheritance Rule; If we point reference of base class then value of a can’t be changed and value of b will be shared among all instances of base class. If we point reference of child class then value of a can be changed and value of b will not be shared among all instances of base class.
+**Ans.**
+<br/>As per Inheritance rule or Concrete class rule, variables a,b are different variables than super.a, super.b. So their values can be changed. When I say childObj.b, the closest declaration will be used i.e. non-static b.
 
-**Q2. An interface has a variable int a = 20;
+**Q2. An interface has a variable int a = 20;**
 <br/>Can child have member with same name?
 <br/>Can child class modify a in its constructor?
-<br/>Whether child class member a would become final?**
+<br/>Whether child class member a would become final?
 
-Ans.
-<br/>As per Concrete class Rule, we can declare a in child class. And it’ll not become final.
-<br/>As per Interface rule and Concrete class Rule, value of a can’t be changed.
+**Ans.**
+<br/>As per Inheritance rule or Concrete class, variable a in child class and interface are different. So child class have variable with 'a' name.
+<br/>As per Final rule, value of 'a' can't be changed.
+<br/>As per Interface rule or Concrete class Rule, a is independent and will not become final.
 
 **Q3. Can we create another instance of same class in its constructor?**
-Ans. Yes. But it may fall in loop and can cause JVM Stack OutOfMemory error.
+<br/>Ans. Yes. But it may fall in loop and can cause JVM Stack OutOfMemory error.
 
 **Q4. Whether a class/ interface can extend itself?**
-Ans. As per Common Rules for Concrete class and Interface, No.
+<br/>Ans. As per Common Rules for Concrete class and Interface, No.
 
 **Q5. Whether an interface and abstract class can have main()?**
-Ans. As per Abstract class rule, it can have main(). As per Interface Rule, an interface can’t have main().
+<br/>Ans. As per Abstract class rule, it can have main(). As per Interface rule, it can have `public void main()`, static abstract methods are not allowed .
 
 **Q6. Whether an abstract class can extend**
 * abstract class
 * concrete class
 * Interface
 
-Ans. 
-<br/>As per Common Rules for Abstract class and Interface, an abstract class can extend another abstract class or can implement another interface. Implementation of abstract methods, of its parent, is optional. If it is not implemented then child concrete class of this abstract class is supposed to implement all abstract methods.
-<br/>As per Abstract class Rule, it can extend concrete class as well. Also read Inheritance rule.
+**Ans.**
+<br/>As per Abstract class rule, yes. 
+<br/>As per Common Rules for Abstract class and Interface, implementation of abstract methods of parent is optional.
 
 **Q7. Whether a class can bypass implementation of abstract methods?**
-<br/>Ans. Yes, if it an abstract class.
+<br/>Ans. Yes, if it an abstract class. (As per Common Rules for Abstract class and Interface)
 
 **Q8. Why a parent class/interface can refer child class?**
 <br/>Ans. To support polymorphism. You can use single entity as entry point to accept all its type.
 
-**Q9. What if a base class has same method an interface has where interface is implemented by child class?**
-<br/>Ans. If a base class method is not private then it is the member of child class too. So it is optional to child class to implement the same method again.
+**Q9. What if a child class extend a class and implement an interface which have method with same signature?**
+<br/>Ans. As per Inheritance rule, yes.
 
 **Q10. What if an abstract class and interface has same method signature and a concrete class extends both?**
-<br/>Ans. Both are asking to concrete class to implement same method signature (ie same responsibility). So there is no error or exception.
+<br/>Ans. Same as Q9.
 
 **Q11. Can we re-declare field members in child class with other modifiers?**
 <br/>Ans. As per Concrete class rule and answer of Q1, yes.
