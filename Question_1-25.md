@@ -46,7 +46,7 @@
 <br/>Ans. Same as Q9.
 
 **Q11. Can we re-declare field members in child class with other modifiers?**
-<br/>Ans. As per Concrete class rule and answer of Q1, yes.
+<br/>Ans. As per Inheritance rule or Concrete class rule, yes.
 
 **Q12. If a child class override method() where method() of parent class throws an IOException but child class’s method() doesn’t, do we need to catch it or throw IOException for further level if we create object of child class and call method()?**
 <br/>Ans. As per Inheritance Rule, Yes.
