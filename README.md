@@ -20,12 +20,11 @@ Basic concepts of Java to answer any question about how Java works specially in 
 ####Concrete class
 1. All methods have some functionality.
 2. cannot be static
-3. Every member can be written as this.member-name inside member methods.
-4. Constructor gets called after initializing memory by JVM.
-5. Declaration of any member is fully independent from any other class/interface.
-6. You can extend 1 class but multiple interfaces.
-7. Can have static member and static block which are executed first in the class and top to bottom.
-8. All classes has default constructor, with no statement inside, by default until you create any constructor manually.
+3. Constructor gets called after initializing memory by JVM.
+4. Declaration of any member is fully independent from any other class/interface.
+5. You can extend 1 class but multiple interfaces.
+6. Can have static member and static block which are executed first in the class and top to bottom.
+7. All classes has default constructor, with no statement inside, by default until you create any constructor manually.
 
 ####Interface
 1. It's all member fields are **public** (since has no implementation private fields can't be used), **final** (since interfance can't be instanciated they can have only 1 value) **static** (since interfance can't be instanciated and member field are not the responsibilities for other class).
@@ -63,6 +62,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 3. A reference can call method of referred instance only.
 4. Child class need not to throw an exception while overriding a method, it is automatically get thrown by child class method.
 5. Super() must be first statement in child class constructor. If you don’t call super() explicitly, compiler automatically adds empty super().
+6. Members can have same name or method signature. In case of ambiguity, *this* is used to represent current class' members and super is used to represent members of parent class. Otherwise the closest declaration will be referred.
 
 ####Garbage Collector
 1. It fragment and release only heap memory not stack memory.
@@ -72,7 +72,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 ####Serialization
 1. Transient and static variables are skipped while serialization/deserialization.
 2. In alternate of Transient, a class can have *ObjectStreamField[] serialPersistentFields* of class members which can be serialized.
-3. While Serialization all default constructor of super classes are called. But deserialization calls default constructor of all non-serialized class from top of inheritance tree till it meets any serialized class. In addition, deserialization 3. doesn’t call constructor of current class.
+3. While serialization process all default constructor of super classes are called. But deserialization calls default constructor of all non-serialized class from top of inheritance tree till it meets any serialized class. In addition, deserialization 3. doesn’t call constructor of current class.
 4. At the time of deserialization, first empty constructor gets called then all deserialized values are assigned to relevant property.
 
 ####Threading
