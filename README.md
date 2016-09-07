@@ -8,7 +8,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 ##Rules (upto Java 7)
 
 ####Final
-1. No further change ( So should be assigned either the time of declaration or in constructor)
+1. No further change ( So should be assigned either the time of declaration or in of same constructor)
 2. JVM allocates same memory location for same constants.
 
 ####Static
