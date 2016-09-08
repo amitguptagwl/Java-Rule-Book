@@ -7,20 +7,20 @@ Ans. Yes.
 Ans. Yes.
 
 **Q28. Why and when to make a class abstract?**
+<br/>Ans.
 
-Ans. When client must implement some set of methods while implementation of some method is optional. For example,
+1. As Abstract class = Interface + Concrete class, so when we want the child class to implement some responsibilities as well as there is something which can be implemented in the parent class, like something common among all children then abstract class can be used. However, this can also be achieved by extending one concrete class and implementing an interface by all the children. But in this case, the parent is not asking or rather forcing a child to fulfill some responsibilities. This becomes optional.
+2. one to many: my all child classes should fulfill these responsibilities. <br/>one to one : current class should fulfill these responsibilities.
+3. Parent class: type of <br/>Interface : marker, tag
 
-batchJob extends Job
-
-On the other hand, classes which represent to some set of responsibilities, features, or services but don’t represent any physical entity
-
-then these classes can be declared as abstract class.
 
 **Q29. Why to make a class final?**
+<br/>Ans. 
+<br/>To stop inheritance: "The interaction of inherited classes with their parents can be surprising and unpredicatable if the ancestor wasn't designed to be inherited from."
+<br/>"to favour composition over inheritance" - Effective Java
+<br/>It may not be useful if you are writing internal code. But it can be useful when writing external libraries.
+<br/> It guarantees immutability.
 
-Ans. While creating java API, API developer never wants any programmer overriding default nature of the API class. So making them
-
-final stops any one inheriting it.
 
 **Q30. Whether a final class can have final or static methods?**
 
