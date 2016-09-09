@@ -23,14 +23,17 @@
 
 
 **Q30. Whether a final class can have final or static methods?**
-<br />Ans. If a class is final no one can override it. Hence no one can override its method too. So both supports each other. Hence it is allowed. However it has no sense.
+<br />Ans. By Concrete class rule it is possible. But there is no sens to have final methods in final class. Static is fine.
 
 **Q31. Whether you can change field members value of final object?**
-<br />Ans. If an object is final it means it can&#39;t refer to any other object/instance. But it doesn&#39;t make field member final. So they are changeable.
+<br />Ans. Making an object final means it's reference can't be changed, but the value of field members can be.
 
 **Q32. What is the advantage of creating a final variables?**
+<br />Ans:
 
-Ans. As per the performance, there is no advantage. It is just a coding standard to clarify that this variable is read only. It saves you from changing variable value accidentally. On the other hand, anonymous method accept only final external variables. So it is required.
+* It guarantees immutability which is supported by annonymous classes, String, and other places.
+* JVm assigns single memory location for same value variables.
+* It gives clarity that this variable is read only. and saves you from changing variable value accidentally.
 
 **Q33. What is the advantage of creating a final parameter for a method where parameter is never modified in method?**
 <br />Ans. Read Q32.
@@ -44,12 +47,15 @@ Ans. As per the performance, there is no advantage. It is just a coding standard
 **Q36. How can you pull an object out collected by GC?**
 <br />Ans. Do some operation on object in finalize() of that class.
 
-**Q37. Whether an unclosed stream/connection may cause memory leak?**
+**On Hold**
+Q37. Whether an unclosed stream/connection may cause memory leak?
 <br />Ans. No
 
+**On Hold**
 **Q38. Whether String.intern() may cause memory leak?**
 <br />Ans. Yeas if you are calling intern() on huge number of strings which are unique (no common string) then they’ll fill up string pool.
 
+**On Hold**
 **Q39. Can you serialize a class having non-serialize parent? What if a class has reference of non-serialize class?**
 <br />Ans. As per Common Rules for Concrete class and Interface, parent class will not be serializable. Although, it’ll not give any error but values of A will not be serialized. At the time of deserialization, A’s values will be assigned with default values, or with values assigned at the time of declaration or in default constructor.
 
