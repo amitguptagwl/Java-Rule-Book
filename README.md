@@ -96,6 +96,12 @@ Basic concepts of Java to answer any question about how Java works specially in 
 1. Is Self-Type. Declared as  Enum< E extends Enum< E>>
 2. Can implement an interface.
 
+####Enum 
+TODO
+
+####Networking
+TODO
+
 ####Other
 1. hashCode() returns same value for two objects if obj1.equals(obj2) is true.
 2. equals() method must exhibit the following properties:
