@@ -92,7 +92,7 @@ public class SynchoTest {
 
 <br />Ans. By rules, yes. Because when thread B calls modify(), it doesn't meet to any monitor. However if both threads call acquire() then second thread will wait.
 
-**Q44.Can following program lead deadlock?**
+**Q45.Can following program lead deadlock?**
 
 ```java
 public synchronized void acquire() throws Exception{
@@ -145,6 +145,50 @@ Deadlock detected in
 Thread id: 9
 Thread id: 8
 ```
+
+**Q46. Which of the following methods are correct?**
+
+```java
+public void method(){
+    synchronized(a){
+        wait();
+    }
+}
+ 
+public void method(){
+    synchronized(a){
+        synchronized(this){
+            wait(n);
+        }
+    }
+}
+ 
+public synchronized void method(){
+    synchronized(a){
+        wait(n);
+    }
+}
+
+public synchronized void method(){
+    synchronized(a){
+    	a = 57;
+        a.wait();
+    }
+}
+
+public void method(){
+    synchronized(a){
+        a.wait();
+    }
+}
+ 
+public synchronized void method(){
+    synchronized(a){
+        wait();
+    }
+}
+```
+<br />Ans. By the rules, last 2 methods are correct.
 
 ###Inheritance
 
