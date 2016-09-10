@@ -73,7 +73,26 @@ Q37. Whether an unclosed stream/connection may cause memory leak?
 **Q43. Whether thread t1 &amp; t2, running on 2 separate instances of class A, can access separate synchronized methods of class A at same time where 1 of them is static method?**
 <br />Ans. As per Threading rule, no. (Since static method is sharable between both instances, second thread will wait until first one comes out from the monitor.)
 
-**Inheritance**
+**Q44. For following program, if thread A and thread B runs at same time on same instance where A calls acquire(), and B calls modify(), whether B will modify value of `a`**
+
+```java
+public class SynchoTest {
+ 	:
+    public void acquire() throws Exception{
+        synchronized(a){
+        	Thread.sleep(10000);
+        }
+    }
+ 
+    public void modify(int n){
+        this.a=n;
+    }
+
+}
+```
+
+<br />Ans. By rules, yes. Because when thread B calls modify(), it doesn't meet to any monitor. However if both threads call acquire() then second thread will wait.
+###Inheritance
 
 **Q44. If B extends A and you create object of B where default constructor of A throw some exception then whether object of B would be created?**
 <br />Ans. As per Inheritance rule, yes.
