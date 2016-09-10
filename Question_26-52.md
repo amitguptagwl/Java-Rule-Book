@@ -87,11 +87,65 @@ public class SynchoTest {
     public void modify(int n){
         this.a=n;
     }
-
 }
 ```
 
 <br />Ans. By rules, yes. Because when thread B calls modify(), it doesn't meet to any monitor. However if both threads call acquire() then second thread will wait.
+
+**Q44.Can following program lead deadlock?**
+
+```java
+public synchronized void acquire() throws Exception{
+	Thread.sleep(5000);
+	synchronized(lock){
+		wait(1);
+	}
+}
+
+public synchronized void modify() throws Exception{
+	Thread.sleep(5000);
+	synchronized(lock){
+		wait(1);
+	}
+}
+```
+
+<br />Ans. Yes.
+
+```java
+public synchronized void acquire() throws Exception{ //lock the class object
+	Thread.sleep(5000); 
+	synchronized(lock){ //lock the "lock" object
+		wait(1);
+	}
+}
+
+public synchronized void modify() throws Exception{ //lock the class object
+	Thread.sleep(5000);
+	synchronized(lock){ //lock the "lock" object
+		wait(1);
+	}
+}
+```
+
+```
+A:8
+B:9
+[A:NEW,B:NEW]						Thread A,B started
+[A:RUNNABLE,B:RUNNABLE] 			Both are ready to run
+[A:RUNNABLE,B:BLOCKED]  			A: calls acquire() and lock class obj, B: gets blocked
+[A:TIMED_WAITING,B:BLOCKED]			A: waiting due to sleep(), B: still blocked
+[A:RUNNABLE,B:BLOCKED] 				A: waiting over, enters into another monitor, B: still blocked
+[A:TIMED_WAITING,B:TIMED_WAITING]	A: waiting due to wait(), B: signaled to go ahead, calls modify()
+[A:BLOCKED,B:TIMED_WAITING] 		A: Can't enter into first monitor as Baquires that lock, B: waiting due to sleep()
+[A:BLOCKED,B:RUNNABLE]				A: Blocked due to B, B: sleep() completes
+[A:BLOCKED,B:BLOCKED]				A: Blocked due to B, B: Blocked due to A dint release monitor of "lock" obj,
+Both threads are blocked
+Deadlock detected in
+Thread id: 9
+Thread id: 8
+```
+
 ###Inheritance
 
 **Q44. If B extends A and you create object of B where default constructor of A throw some exception then whether object of B would be created?**
