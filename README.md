@@ -78,12 +78,12 @@ Basic concepts of Java to answer any question about how Java works specially in 
 
 Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016/04/03/serialization-a-sci-fi-story/)
 
-####Multi-threading
+####Multithreading
 1. More than 1 thread can’t access same monitor at a time, if both are in running state. (Same monitor means who has same memory address)
 2. `synchronized method(…` or `Synchronized(this)` takes lock current object. Hence `static synchronized method(…` takes lock on whole class.
-3. 
+3. notify() or notifyAll(), and wait() must be in a synchronized block for the object you are waiting on. 
 
-[Read](https://articlestack.wordpress.com/category/tutorial/java/multithreading/)
+[Read](https://articlestack.wordpress.com/category/tutorial/java/multithreading/): [Important Terms](https://articlestack.wordpress.com/2016/01/19/java-multithreading/), [Synchronization & Deadlock](https://articlestack.wordpress.com/2016/01/20/synchronization/), [wait & notify](https://articlestack.wordpress.com/2016/01/20/java-multithreading-notify-wait/), [join](https://articlestack.wordpress.com/2016/01/23/java-multithreading-join/), [Test your threading code](Thread Tracer)
 
 ####Exception
 1. **try** must be followed by either **catch** or **finally** or both
