@@ -85,6 +85,8 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 4. `notify()` or `notifyAll()`, and `wait()` must be in a synchronized block for the object you are waiting on. And the value of the object must not be changed.
 5. **monitor**: `sleep()` doesn't release the lock. So other threads are supposed to wait<br />**mutual exlusion**: `wait()` release the lock and acquire it again once relevant `notify()` is called. ([CyclicBarrier](https://articlestack.wordpress.com/2016/01/23/cyclicbarrier/) can be used to wait N threads at a time. CountDownLatch can be used to wait N starting threads. `join` can be used to wait until respective thread is completed.)
 6. Doubles and longs assignment is not atomic. Mark them `volatile` or synchronized their assignment.
+7. **daemon threads**: (eg garbage collector) killed by JVM once all user threads are finished. If parent thread is daemon, child thread will also be.
+8. 
 
 **ThreadLocal**: allows you to have a variable that will be unique to a given thread. (Thus, if the same code runs in different threads, these executions will not share the value, but instead each thread has its own variable that is local to the thread.)
 <br/>**Executor**: Make pooling, scheduling, and interaction with running threads/tasks possible.
