@@ -80,11 +80,18 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 
 ####Multithreading
 1. More than 1 thread can’t access same monitor at a time, if both are in running state. (Same monitor means who has same memory address)
-2. `synchronized method(…` or `Synchronized(this)` takes lock current object. Hence `static synchronized method(…` takes lock on whole class. ([External locks](https://articlestack.wordpress.com/2016/01/23/java-multithreading-external-locks/) seems better than synchronized blocks)
+2. `synchronized method(…` or `Synchronized(this)` takes lock current object. Hence `static synchronized method(…` takes lock on whole class. ([External locks](https://articlestack.wordpress.com/2016/01/23/java-multithreading-external-locks/) or ReentrantLock/ReadWriteLock seems better than synchronized blocks)
 3. `notify()` or `notifyAll()`, and `wait()` must be in a synchronized block for the object you are waiting on. And the value of the object must not be changed.
-4. `sleep()` doesn't release the lock. So other threads are supposed to wait<br />`wait()` release the lock and acquire it again once relevant `notify()` is called. ([CyclicBarrier](https://articlestack.wordpress.com/2016/01/23/cyclicbarrier/) can be used to wait N threads at a time. CountDownLatch can be used to wait N starting threads.)
+4. **monitor**: `sleep()` doesn't release the lock. So other threads are supposed to wait<br />**mutual exlusion**: `wait()` release the lock and acquire it again once relevant `notify()` is called. ([CyclicBarrier](https://articlestack.wordpress.com/2016/01/23/cyclicbarrier/) can be used to wait N threads at a time. CountDownLatch can be used to wait N starting threads. `join` can be used to wait until respective thread is completed.)
+5. Doubles and longs assignment is not atomic. Mark them `volatile` or synchronized their assignment.
 
-[Read](https://articlestack.wordpress.com/category/tutorial/java/multithreading/): [Important Terms](https://articlestack.wordpress.com/2016/01/19/java-multithreading/), [Synchronization & Deadlock](https://articlestack.wordpress.com/2016/01/20/synchronization/), [wait & notify](https://articlestack.wordpress.com/2016/01/20/java-multithreading-notify-wait/), [join](https://articlestack.wordpress.com/2016/01/23/java-multithreading-join/), [Test your threading code](Thread Tracer)
+**ThreadLocal**: allows you to have a variable that will be unique to a given thread. (Thus, if the same code runs in different threads, these executions will not share the value, but instead each thread has its own variable that is local to the thread.)
+<br/>**Executor**: Make pooling, scheduling, and interaction with running threads/tasks possible.
+<br/>**Callable**: Similar to Runnable but returns some value.
+<br/>**Future**: Run by some ExecutorService. Let you poll/block/cancel running task.
+<br/>**ThreadPoolExecutor**: perform group operation like set pool size, shutdown pool to stop all running threads etc. `ScheduledThreadPoolExecutor` is extention of this.
+
+<br/>[Read](https://articlestack.wordpress.com/category/tutorial/java/multithreading/): [Important Terms](https://articlestack.wordpress.com/2016/01/19/java-multithreading/), [Synchronization & Deadlock](https://articlestack.wordpress.com/2016/01/20/synchronization/), [wait & notify](https://articlestack.wordpress.com/2016/01/20/java-multithreading-notify-wait/), [join](https://articlestack.wordpress.com/2016/01/23/java-multithreading-join/), [Test your threading code](Thread Tracer)
 
 ####Exception
 1. **try** must be followed by either **catch** or **finally** or both
