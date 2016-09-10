@@ -65,14 +65,13 @@ Q37. Whether an unclosed stream/connection may cause memory leak?
 **Q41. Can we declare local variable as static? Explain.**
 <br />Ans. No. Because if a method is non-static, it can’t have static local variables. And if it is static there is a single instance of this method so static variable are senseless. (All variables and parameters of static method are static. And a static method can call only static methods.)
 
-**Multithreading**
+###Multithreading
 
 **Q42. Whether thread t1 &amp; t2, running on 2 separate instances of class A, can access synchronized method() of class A at same time?**
-
-Ans. As per Threading rule, yes.
+<br />Ans. As per Threading rule, yes. (due to 2 separate instances, there is nothing being shared)
 
 **Q43. Whether thread t1 &amp; t2, running on 2 separate instances of class A, can access separate synchronized methods of class A at same time where 1 of them is static method?**
-<br />Ans. As per Threading rule, no.
+<br />Ans. As per Threading rule, no. (Since static method is sharable between both instances, second thread will wait until first one comes out from the monitor.)
 
 **Inheritance**
 
