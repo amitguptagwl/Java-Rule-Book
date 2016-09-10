@@ -79,9 +79,9 @@ Basic concepts of Java to answer any question about how Java works specially in 
 Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016/04/03/serialization-a-sci-fi-story/)
 
 ####Multi-threading
-1. More than 1 thread can’t access same monitor at a time, if both are in running state.
-2. Static synchronized methodName(… takes lock on whole class.
-3. synchronized methodName(… takes lock current object.
+1. More than 1 thread can’t access same monitor at a time, if both are in running state. (Same monitor means who has same memory address)
+2. `synchronized method(…` or `Synchronized(this)` takes lock current object. Hence `static synchronized method(…` takes lock on whole class.
+3. 
 
 [Read](https://articlestack.wordpress.com/category/tutorial/java/multithreading/)
 
