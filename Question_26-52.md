@@ -190,6 +190,9 @@ public synchronized void method(){
 ```
 <br />Ans. By the rules, last 2 methods are correct.
 
+**Q47. Is it possible to start a thread twice?**
+<br/> No by rules.
+
 ###Inheritance
 
 **Q44. If B extends A and you create object of B where default constructor of A throw some exception then whether object of B would be created?**
