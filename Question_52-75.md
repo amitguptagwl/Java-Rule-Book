@@ -1,53 +1,43 @@
 ##In Progress
 
-###Inheritance
-
 **Q52. If B extends A and you create object of B where default constructor of A throws some exception then whether object of B would be created?**
+<br />Ans. As per Inheritance rule, child class needs to call `super()` on first line of it's constructor. But as per Exception rule, it needs to be handled or throwwn. So child class constructor will have to throw it again. [See](http://stackoverflow.com/a/28678358/453767). If there is not runtime exception then the object will be created.
+
+**Q53. If C extends B extends A and you create C object by its parameterized constructor then whether constructor of A and B would be called?**
 <br />Ans. As per Inheritance rule, yes.
 
-**Q45. If C extends B extends A and you create C object by its parameterized constructor then whether constructor of A and Bwould be called?**
+**Q54. Is this scenario is possible? B extends A where A and B both have a parameterized constructor.**
+<br />Ans. As per Inheritance rule, child class need to call super class constructor otherwise compiler adds empty super() call. Since parent class have parameterized constructor, this call will fails. However if child can call parent parameterized constructor to make it successful.
 
-Ans. As per Inheritance rule, yes.
+**Q55. Whether super.super or this.this is allowed?**
+<br />Ans. this.this is senseless. this.super is not allowed. super.super is not allowed because son inherits properties of father only while the father inherits properties of his father. So if C extends B extends A then B can access all visible members of A. Thus C can access members of A through super only. It doesn’t require super.super.
 
-**Q46. Is this scenario is possible? B extends A where A and B both have a parameterized constructor.**
-
-Ans. As per Concrete class rule 8 and Inheritance rule, no. It will give compilation error.
-
-**Q47. Whether super.super or this.this is allowed?**
-
-Ans. this.this is senseless. this.super is not allowed. super.super is not allowed because son inherits properties of father only while the father inherits properties of his father. So if C extends B extends A then B can access all visible members of A. Thus C can access members of A through super only. It doesn’t require super.super.
-
-**Q48. Can I have a final member field in a class which is not initialized anywhere in the class?**
+**Q56. Can I have a final member field in a class which is not initialized anywhere in the class?**
 <br />Ans. As per Final rules, No. It gives compilation error.
 
-**Q49. A method() accepts String str as parameter then what will str.equals(null) output if I call method(null)?**
-<br />Ans.
-Since null belongs to a value not a class so calling any method over it always generate an exception ie NullPointerException. Here, str.equals(null) will be treated as null.equals(null).
+**Q57. A method() accepts String str as parameter then what will str.equals(null) output if I call method(null)?**
+<br />Ans. When you set str=null, it free the object it is referring to. So calling any method on this will cause NullPointerException.
 
-When you set str=null, it free the object it is referring to. So calling any method on this will cause NullPointerException.
-
-Q50. If
+**Q58. If**
 ```
 String s1 = “Amit”;
 String s2 = new String(“Amit”);
 ```
-Which is true and why
+**Which is true and why**
 
-* “Amit”.equals(s1);
-* “Amit” == s1
-* “Amit”.equals(s2);
-* “Amit” == s2
-* s1.equals(s2);
-* s1 == s2
+1. “Amit”.equals(s1);
+2. “Amit” == s1
+3. “Amit”.equals(s2);
+4. “Amit” == s2
+5. s1.equals(s2);
+6. s1 == s2
 
-Ans. As per final rule 5, s1 will point to memory location where “Amit” resides. So first 2 statements are true.
-
-As per Concrete class rule 4, s2 will point to new memory location having value “Amit. So 3 rd statement is true but 4th is false.
-5th & 6th are similar to 3 rd &amp; 4 th statements.
+<br/>Ans. As per Final rule, s1 will point to memory location where “Amit” resides. So 2nd statements is true. But 4th is false.
+<br/>As per String rule, 1,3,5 are true. and 6 is false.
 
 **Exception Handling**
 
-Q51. If
+**Q59. If**
 ```
 try{
 	String n = null;
@@ -59,44 +49,38 @@ try{
 	System.out.println(3);
 }
 ```
-What would be the output?
+**What would be the output?**
 
-Ans. As per Q49, there would be NullPointerException. So 1 will not be printed. As per Exception rule 3, it’ll print 3 only.
+<br/>Ans. As per Exception rule, onle 1 catch block can be called. Since `Exception` is parent of all type of exceptions. It'll be always called. Hence compile time error "Unreachable catch block for NullPointerException".
 
-Q52. If
+**Q60. If**
 ```
 public int myMethod() {
 	int i=0;
 	try{
 		System.out.println(i);
-		return ++i;
+		return 2;
 	}catch(Exception e){
 		System.out.println(i);
-		return i++;
+		return 3;
 	}finally{
 		System.out.println(i);
-		return i++;
+		return 4;
 	}
 }
 :
-System.out.println(s.myMethod());
+System.out.println("->" +s.myMethod());
 ```
 
-Whether above code will give compilation error? If yes then where and why? If no then why?
+**What would be the output of above code?**
 
-Ans. Above code will output
+<br />Ans. Above code will output
 
 <br />0
-<br />1
-<br />1
+<br />0
+<br />4
 
 **Note:**
 
-1. Since finally block runs ever whether any exception occurs or not so return statements inside try &amp; catch will be ignored. But
-their expression will be executed (like in above example ++i &amp; i++).
-
-Since, in above program, finally returns program control to parent caller and return in try block doesn’t get completed so it
-gives abnormal completion warning.
-2. Above code doesn’t give compilation error since finally block is optional.
-3. In last return statement value of I will be increased after return.
-4. Above code can give Unreachable code compilation error if there is any statement after finally block.
+1. Since finally block runs ever whether any exception occurs or not so return statements inside try &amp; catch will be ignored. But their expression will be executed (like in above example ++i &amp; i++). <br />Since, in above program, finally returns program control to parent caller and return in try block doesn’t get completed so it gives abnormal completion warning.
+2. Above code can give Unreachable code compilation error if there is any statement after finally block.
