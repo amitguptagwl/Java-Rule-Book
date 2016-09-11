@@ -191,7 +191,58 @@ public synchronized void method(){
 <br />Ans. By the rules, last 2 methods are correct.
 
 **Q47. Is it possible to start a thread twice?**
-<br/> No by rules.
+<br/>Ans: No by rules.
+
+**Q48. Is it possible to convert a normal user thread into a daemon thread after it has been started?**
+<br/>Ans: No, you need to call setDaemon() before thread starts.
+
+**Q49. How do we wait in the parent thread for the termination of the child thread?**
+<br/>Ans: join()
+
+**Q50. Have a look on below program to create Daemon thread;**
+```java
+	private static class MyDaemonThread extends Thread {
+
+		public MyDaemonThread() {
+			setDaemon(true);
+		}
+
+		@Override
+		public void run() {
+			while (true) {
+				try {
+					System.out.println(getState());
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+				}
+			}
+		}
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+		Thread thread = new MyDaemonThread();
+		thread.start();
+		thread.join();
+		System.out.println(thread.isAlive());
+	}
+```
+**Answer following**
+
+1. What will be output of above program?
+2. What will be output of above program, if we remove `join`?
+3. What will be output of above program, if we remove `join`, and `setDaemon(true)` both?
+
+<br/>Ans:
+
+1. The main thread will wait for dameon thread to be completed due to `join()` call. But since it is running in loop, `isAlive()` call never be happen.
+2. It'll output `Runnable` then `true`. Now since there is noting to do in main thread or rather there is no other user thread running, dameon thread will be killed by JVM. Hence the above program will not print the state anymore.
+3. It'll output `Runnable` then `true`. Since this is not dameon but user thread, JVM will wait it to be completed. Hence it's state `Runnable` will keep printing for forever until something interrupt it.
+
+**Q51. Can primitive values be used for intrinsic locks?**
+<br/>Ans: No because this operation is atomic.
+
+**Q52. Can a constructor be synchronized?**
+<br/>Ans: No, because synchronization is needed when same memory location can be accessed by multiple threads. In case of constructor, everytime new object will be created.
 
 ###Inheritance
 
