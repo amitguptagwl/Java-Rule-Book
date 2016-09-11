@@ -1,5 +1,3 @@
-##In Progress
-
 **Q26. Can a class have static final methods?**
 <br />Ans. Since both are not contradictory, so yes.
 
