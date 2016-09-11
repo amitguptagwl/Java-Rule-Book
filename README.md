@@ -1,6 +1,8 @@
 # Java Rule Book
 Basic concepts of Java to answer any question about how Java works specially in job interviews. With combining multiple rules you can answer many java question
 
+**This book is only suitable for someone who has worked in Java**
+
 **Feel free to correct any rule or to suggest any correction needed.**
 
 [![Donate to author](https://www.paypalobjects.com/webstatic/en_US/btn/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQJAX48SPUKNC)
@@ -71,10 +73,9 @@ Basic concepts of Java to answer any question about how Java works specially in 
 3. finalize() is called only when object memory is released from heap.
 
 ####Serialization
-1. Transient and static variables are skipped while serialization/deserialization.
-2. In alternate of Transient, a class can have *ObjectStreamField[] serialPersistentFields* of class members which can be serialized.
-3. While serialization process all default constructor of super classes are called. But deserialization calls default constructor of all non-serialized class from top of inheritance tree till it meets any serialized class. In addition, deserialization 3. doesn’t call constructor of current class.
-4. At the time of deserialization, first empty constructor gets called then all deserialized values are assigned to relevant property.
+1. Transient and static variables are skipped while serialization/deserialization. In alternate of Transient, a class can have *ObjectStreamField[] serialPersistentFields* of class members which can be serialized.
+2. While serialization process all default constructor of super classes are called. But deserialization calls default constructor of all non-serialized class from top of inheritance tree till it meets any serialized class. In addition, deserialization and it doesn’t call constructor of current class.
+3. At the time of deserialization, first empty constructor gets called then all deserialized values are assigned to relevant property.
 
 Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016/04/03/serialization-a-sci-fi-story/)
 
