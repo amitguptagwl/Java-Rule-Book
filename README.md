@@ -85,7 +85,7 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 4. `notify()` or `notifyAll()`, and `wait()` must be in a synchronized block for the object you are waiting on. And the value of the object must not be changed. `notify()` or `notifyAll()` to awake threads which are waiting. `interrupt()` to awake thread which is sleeping.
 5. `sleep()` doesn't release the lock. So other threads are supposed to wait<br />**mutual exlusion**: `wait()` release the lock and acquire it again once relevant `notify()` is called. ([CyclicBarrier](https://articlestack.wordpress.com/2016/01/23/cyclicbarrier/) can be used to wait N threads at a time. CountDownLatch can be used to wait N starting threads. `join` can be used to wait until respective thread is completed. `Semaphore` is used to controll number of threads. )
 6. Doubles and longs assignment is not atomic. Mark them `volatile` or synchronized their assignment.
-7. [**daemon threads**](http://stackoverflow.com/a/19421083/453767): (eg garbage collector) killed by JVM once all user threads are finished. JVM will exit when only daemon threads remain. If parent thread is daemon, child thread will also be. 8. 
+7. [**daemon threads**](http://stackoverflow.com/a/19421083/453767): (eg garbage collector) killed by JVM once all user threads are finished. JVM will exit when only daemon threads remain. If parent thread is daemon, child thread will also be. 8. `Thread.yield()` gives the scheduler a hint that the current thread is willing to free the processor.
 
 **busy waiting**: wait for an event by performing some active computations that let the thread/process occupy the processor. Eg looping long time to wait instead of using `Thread.sleep()`.
 <br/>**ThreadLocal**: allows you to have a variable that will be unique to a given thread. (Thus, if the same code runs in different threads, these executions will not share the value, but instead each thread has its own variable that is local to the thread.)
@@ -93,6 +93,7 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 <br/>**Callable**: Similar to Runnable but returns some value.
 <br/>**Future**: Run by some ExecutorService. Let you poll/block/cancel running task.
 <br/>**ThreadPoolExecutor**: perform group operation like set pool size, shutdown pool to stop all running threads etc. `ScheduledThreadPoolExecutor` is extention of this.
+<br/>**Fork/Join**: It is an implementation of the ExecutorService. It is designed for work that can be broken into smaller pieces recursively. (CompletableFuture is also worth to check)
 
 <br/>[Read](https://articlestack.wordpress.com/category/tutorial/java/multithreading/): [Important Terms](https://articlestack.wordpress.com/2016/01/19/java-multithreading/), [Synchronization & Deadlock](https://articlestack.wordpress.com/2016/01/20/synchronization/), [wait & notify](https://articlestack.wordpress.com/2016/01/20/java-multithreading-notify-wait/), [join](https://articlestack.wordpress.com/2016/01/23/java-multithreading-join/), [Test your threading code](Thread Tracer)
 
