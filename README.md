@@ -81,14 +81,14 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 ####Multithreading
 1. NEW -> RUNNABLE <-> BLOCKED/WAITING/TIMED_WAITING -> TERMINATED
 2. More than 1 thread can’t access same monitor at a time, if both are in running state. (Same monitor means who has same memory address)
-3. `synchronized method(…` or `Synchronized(this)` takes lock current object. Hence `static synchronized method(…` takes lock on whole class. ([External locks](https://articlestack.wordpress.com/2016/01/23/java-multithreading-external-locks/) or ReentrantLock/ReadWriteLock seems better than synchronized blocks)
-4. `notify()` or `notifyAll()`, and `wait()` must be in a synchronized block for the object you are waiting on. And the value of the object must not be changed.
-5. **monitor**: `sleep()` doesn't release the lock. So other threads are supposed to wait<br />**mutual exlusion**: `wait()` release the lock and acquire it again once relevant `notify()` is called. ([CyclicBarrier](https://articlestack.wordpress.com/2016/01/23/cyclicbarrier/) can be used to wait N threads at a time. CountDownLatch can be used to wait N starting threads. `join` can be used to wait until respective thread is completed.)
+3. `synchronized method(…` or `Synchronized(this)` locks object itself. Hence `static synchronized method(…` takes lock on whole class. ([External locks](https://articlestack.wordpress.com/2016/01/23/java-multithreading-external-locks/) or ReentrantLock/ReadWriteLock seems better than synchronized blocks)
+4. `notify()` or `notifyAll()`, and `wait()` must be in a synchronized block for the object you are waiting on. And the value of the object must not be changed. `notify()` or `notifyAll()` to awake threads which are waiting. `interrupt()` to awake thread which is sleeping.
+5. `sleep()` doesn't release the lock. So other threads are supposed to wait<br />**mutual exlusion**: `wait()` release the lock and acquire it again once relevant `notify()` is called. ([CyclicBarrier](https://articlestack.wordpress.com/2016/01/23/cyclicbarrier/) can be used to wait N threads at a time. CountDownLatch can be used to wait N starting threads. `join` can be used to wait until respective thread is completed. `Semaphore` is used to controll number of threads. )
 6. Doubles and longs assignment is not atomic. Mark them `volatile` or synchronized their assignment.
-7. **daemon threads**: (eg garbage collector) killed by JVM once all user threads are finished. If parent thread is daemon, child thread will also be.
-8. 
+7. [**daemon threads**](http://stackoverflow.com/a/19421083/453767): (eg garbage collector) killed by JVM once all user threads are finished. JVM will exit when only daemon threads remain. If parent thread is daemon, child thread will also be. 8. 
 
-**ThreadLocal**: allows you to have a variable that will be unique to a given thread. (Thus, if the same code runs in different threads, these executions will not share the value, but instead each thread has its own variable that is local to the thread.)
+**busy waiting**: wait for an event by performing some active computations that let the thread/process occupy the processor. Eg looping long time to wait instead of using `Thread.sleep()`.
+<br/>**ThreadLocal**: allows you to have a variable that will be unique to a given thread. (Thus, if the same code runs in different threads, these executions will not share the value, but instead each thread has its own variable that is local to the thread.)
 <br/>**Executor**: Make pooling, scheduling, and interaction with running threads/tasks possible.
 <br/>**Callable**: Similar to Runnable but returns some value.
 <br/>**Future**: Run by some ExecutorService. Let you poll/block/cancel running task.
