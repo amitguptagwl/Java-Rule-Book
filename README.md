@@ -102,6 +102,7 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 1. **try** must be followed by either **catch** or **finally** or both
 2. finally is always called.
 3. Only 1 catch block is called start from top to bottom.
+4. If you call a method throwing some exception, either you need to catch the same or wider exception or throw it again.
 
 ####String
 1. == checks for reference only.
