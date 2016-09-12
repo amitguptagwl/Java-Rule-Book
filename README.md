@@ -121,7 +121,7 @@ TODO
 TODO
 
 ####Other
-1. hashCode() returns same value for two objects if obj1.equals(obj2) is true.
+1. hashCode() returns same value for two objects if obj1.equals(obj2) is true. hashcode is used to narrow up the results of fast searching. But it doesn't gurantee that the objects are same.
 2. equals() method must exhibit the following properties:
   * *Symmetry*: For two references, a and b, a.equals(b) if and only if b.equals(a)
   * *Reflexivity*: For all non-null references, a.equals(a)
