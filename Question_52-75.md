@@ -73,9 +73,7 @@ System.out.println("->" +s.myMethod());
 ```
 
 **What would be the output of above code?**
-
 <br />Ans. Above code will output
-
 <br />0
 <br />0
 <br />4
@@ -83,4 +81,95 @@ System.out.println("->" +s.myMethod());
 **Note:**
 
 1. Since finally block runs ever whether any exception occurs or not so return statements inside try &amp; catch will be ignored. But their expression will be executed (like in above example ++i &amp; i++). <br />Since, in above program, finally returns program control to parent caller and return in try block doesn’t get completed so it gives abnormal completion warning.
-2. Above code can give Unreachable code compilation error if there is any statement after finally block.
+2. Above code can give **Unreachable code** compilation error if there is any statement after finally block.
+
+**Serialization**
+
+```java
+public class GrandParent {
+	public GrandParent() {
+		System.out.println("Grand Parent");
+	}
+}
+
+public class Parent extends GrandParent implements Serializable{
+	public Parent() {
+		System.out.println("Parent");
+	}
+}
+
+public class Child extends Parent{
+	public Child() {
+		System.out.println("Child");
+	}
+	public static void main(String[] args) throws Exception {
+		Child child = new Child();
+		
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("fileName"));
+		out.writeObject(child);
+		
+		System.out.println("Deserialing");
+		
+		ObjectInputStream in = new ObjectInputStream(new FileInputStream("fileName"));
+		Child child2 = (Child) in.readObject();
+	}
+}
+
+```
+
+Output
+
+```
+Grand Parent
+Parent
+Child
+Deserialing
+Grand Parent
+```
+
+**Q61. If C extends B extends A where**
+
+1. A is serializable
+2. B is serializable
+3. A and B both are serializable
+4. A and B both are non-serializable
+
+**Which constructors will be called by Deserialization?**
+
+<br />Ans. As per serialization rule 3,
+
+1. No constructor call. Because deserialization finds serializable class in starting
+2. A()
+3. No constructor call
+4. A() then B()
+
+**Q62. If C extends B extends A where**
+
+1. A is serializable
+2. B is serializable
+3. A and B both are serializable
+4. A and B both are non-serializable
+
+Where A has no default constructor but parameterized constructor().
+
+**Which constructors will be called by Deserialization?**
+<br />Ans. 
+
+1. No constructor call. Because deserialization finds serializable class in starting
+2. It’ll give compilation error since, as per Inheritance rule, parent class always must have default constructor or child class constructor must have explicit call to parameterized constructor of parent class.
+<br/> However if child class call parameterized constructor of super class then, it'll throw runtime exception at the time of deserialization: "java.io.InvalidClassException".
+3. No constructor call
+4. Same as point 2
+
+**Enum**
+
+**Q55. Why an enum can not extend another enum or class while the java compiler translates it into class later?**
+<br />And. As per Enum rule 1, It can extend enum of its own type only.
+
+**Q56. Whether an enum can have abstract methods?**
+<br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract
+
+**Method**
+
+**Q57. Why an enum can implement an interface but can’t extend a class or enum?**
+<br />Ans.
