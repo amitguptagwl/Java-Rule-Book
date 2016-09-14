@@ -125,6 +125,14 @@ Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-B
 6. List and Multimap allow duplicate items
 7. Sorted Map/Set (Tree Map/Set) requires item to be comparable.( It can help you to maintain insertion order.)
 
+####Generics 
+
+1. Type safety = One type only
+2. `? extends T` =  a subtype of the type T
+3. `? super T` = 
+Generics are not covariant. They are invariant
+
+
 ####Files 
 TODO
 
