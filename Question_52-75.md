@@ -163,13 +163,9 @@ Where A has no default constructor but parameterized constructor().
 
 **Enum**
 
-**Q55. Why an enum can not extend another enum or class while the java compiler translates it into class later?**
-<br />And. As per Enum rule 1, It can extend enum of its own type only.
+**Q63. Why an enum can not extend another enum or class but an interface while the java compiler translates it into class later?**
+<br />And. As per Enum rule and inheritance, it already extends Enum<T>. That class provides all the enum functionality. 
 
-**Q56. Whether an enum can have abstract methods?**
+**Q64. Whether an enum can have abstract methods?**
 <br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract
 
-**Method**
-
-**Q57. Why an enum can implement an interface but can’t extend a class or enum?**
-<br />Ans.
