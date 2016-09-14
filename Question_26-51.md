@@ -58,6 +58,20 @@
 <br />Ans. No. Because if a method is non-static, it can’t have static local variables. And if it is static there is a single instance of this method so static variable are senseless. (All variables and parameters of static method are static. And a static method can call only static methods.)
 
 ###Multithreading
+Check [Cookie Maker](https://github.com/NaturalIntelligence/Practical-Java/tree/master/Concurrency/src/os/nushi/concurrency/cookiemaking2) problem to improve your understanding in following;
+
+1. Executor & ExecutorServices to make ThreadPool.
+2. Use of Future Object & Callable interface to enquiry/communicate with running thread.
+3. Use of Semaphore to control number of threads.
+4. Lock over synchronized block
+5. Threads inside threads
+6. Enum & EnumMap to store well known values.
+7. Condition (labelled wait & notify) to notify thread waiting for specific condition.
+8. What is Race condition
+9. What is Deadlock? and How can it be created?
+10. Understand livelock
+11. Daemon threads
+12. Different state of threads
 
 **Q41. Whether thread t1 &amp; t2, running on 2 separate instances of class A, can access synchronized method() of class A at same time?**
 <br />Ans. As per Threading rule, yes. (due to 2 separate instances, there is nothing being shared)
