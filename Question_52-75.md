@@ -169,3 +169,31 @@ Where A has no default constructor but parameterized constructor().
 **Q64. Whether an enum can have abstract methods?**
 <br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract
 
+**Q65. Explain below code**
+```java
+List<Fruit> fruits = new ArrayList<Fruit>();
+fruits.add(new Apple());
+fruits.add(new Strawberry());
+
+List<Fruit> fruits = new ArrayList<Apple>();//Compilation Error: not allowed
+
+List<? extends Fruit> fruits = new ArrayList<Apple>();
+fruits.add(new Strawberry()); //Compile time error
+fruits.add(new Fruit()); //Compile time error
+fruits.add(new Apple()); //Compile time error
+```
+
+```java
+Apple[] apples = new Apple[1];
+Fruit[] fruits = apples;
+fruits[0] = new Strawberry();//Runtime Exception
+
+List<Apple> apples = new ArrayList<Apple>();
+//List<Fruit> fruits = apples; //Compile time error
+List<? extends Fruit> fruits = apples;
+//fruits.add(new Strawberry()); //Compile time error
+//fruits.add(new Fruit()); //Compile time error
+//fruits.add(new Apple()); //Compile time error
+Fruit fruit = fruits.get(0);
+```
+<br />Ans. By Generic rules, List of type `? extends Fruit` should accept any subtype of Fruit. But for type safety only one type is allowed, hence comilation errors are expected.
