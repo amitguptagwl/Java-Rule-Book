@@ -114,6 +114,17 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 1. Is Self-Type. Declared as  Enum< E extends Enum< E>>
 2. Can implement an interface.
 
+####Collection/Map
+Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-Book/blob/master/collections.pdf) for better understanding;
+
+1. **HashMap**: key is used to calculate a hash which is used then to find a bucket where that particular key is stored. If there are multiple objects in the same bucket they are stored in linked list( balanced tree after a threshhold in java8) and equals() is used to get an element.
+2. **WeakHashMap**: Same as HashMap but entries can be garbage collected.
+3. **IdentityHashMap**: Same as HashMap but == is used instead of equals()
+4. **HashTable**: Same as HashMap (other than java8 changes) but it is synchronized and doesn't allow `null`.
+5. Linked Set/List/Map and ArrayList maintain insertion order.
+6. List and Multimap allow duplicate items
+7. Sorted Map/Set (Tree Map/Set) requires item to be comparable.( It can help you to maintain insertion order.)
+
 ####Files 
 TODO
 
