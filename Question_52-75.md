@@ -181,6 +181,12 @@ List<? extends Fruit> fruits = new ArrayList<Apple>();
 fruits.add(new Strawberry()); //Compile time error
 fruits.add(new Fruit()); //Compile time error
 fruits.add(new Apple()); //Compile time error
+
+List<? super Apple> fruits = new ArrayList<Fruit>();
+fruits.add(new Strawberry()); //Compile time error
+fruits.add(new Fruit()); //Compile time error
+fruits.add(new Apple()); 
+
 ```
 
 ```java
