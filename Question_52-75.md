@@ -177,23 +177,9 @@ fruits.add(new Strawberry());
 
 List<Fruit> fruits = new ArrayList<Apple>();//Compilation Error: not allowed
 ```
-<br/>Ans. As per Generics rule, List<Apple> is not sub-type of List<Fruit>.
+<br/>Ans. As per Generics rule, List<Apple> is not sub-type of List<Fruit>. But since Apple,Strawberry are type of Fruit List.add() allows any type of Fruit.
 
 **Q66. Explain below code**
-```java
-List<? extends Fruit> fruits = new ArrayList<Apple>();
-fruits.add(new Strawberry()); //Compile time error
-fruits.add(new Fruit()); //Compile time error
-fruits.add(new Apple()); //Compile time error
-
-List<? super Apple> fruits = new ArrayList<Fruit>();
-fruits.add(new Strawberry()); //Compile time error
-fruits.add(new Fruit()); //Compile time error
-fruits.add(new Apple()); 
-
-```
-<br/>Ans. As per Generics rule, List<Apple> is sub-type of List<? extends Fruit>.
-
 ```java
 Apple[] apples = new Apple[1];
 Fruit[] fruits = apples;
@@ -206,5 +192,122 @@ List<? extends Fruit> fruits = apples;
 //fruits.add(new Fruit()); //Compile time error
 //fruits.add(new Apple()); //Compile time error
 Fruit fruit = fruits.get(0);
+
+
+List<? super Apple> apples = new ArrayList<Fruit>();
+apples.add(new Strawberry()); //Compile time error
+apples.add(new Fruit()); //Compile time error
+apples.add(new Apple()); 
+
 ```
-<br />Ans. By Generic rules, List of type `? extends Fruit` should accept any subtype of Fruit. But for type safety only one type is allowed, hence comilation errors are expected.
+<br />Ans. By Generic rules, `List<Apple>` is subtype of  `List<? extends Fruit>` so list of apples can be assigned to list of fruits. 
+<br />But since list of fruits can point to list of any type of fruits, `fruits.get()` doesn't gurantee what will come out but it is sure that it'll a fruit. Hence only `Fruit fruit = fruits.get(0)` is allowed.
+<br />Now, similarly, since list of fruits can point to list of any type of fruits, adding particular type of fruit may be wrong. So suppose you try to add Apple but list of fruits is pointing to list of Strawberries. So you can not add any type of fruite. Now with the same reason, you can't add `new Fruit()` because parent class object can't be assigned to child type reference.
+
+<br />In case of super, list of fruits or list of objects can be assigned to list of apples.
+<br />But while reading, you can't guarantee what will come out. However it is guaranteed to be Object.
+<br />While adding, since list of apples can point either list of apples itself or the list of it's super classes so any object of Apple or it's subtype can be added. But instance of Fruit or it's other type can't be added.
+
+**Q67. What is the following class converted to after type erasure?**
+```java
+public class Pair<K, V> {
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey(); { return key; }
+    public V getValue(); { return value; }
+
+    public void setKey(K key)     { this.key = key; }
+    public void setValue(V value) { this.value = value; }
+
+    private K key;
+    private V value;
+}
+```
+Ans.
+```java
+public class Pair {
+
+    public Pair(Object key, Object value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public Object getKey()   { return key; }
+    public Object getValue() { return value; }
+
+    public void setKey(Object key)     { this.key = key; }
+    public void setValue(Object value) { this.value = value; }
+
+    private Object key;
+    private Object value;
+}
+```
+
+**Q68. What is the following method converted to after type erasure?**
+```java
+public static <T extends Comparable<T>>
+    int findFirstGreaterThan(T[] at, T elem) {
+    // ...
+}
+```
+
+Ans.
+```java
+public static int findFirstGreaterThan(Comparable[] at, Comparable elem) {
+    // ...
+}
+```
+**Q69. Justify bewlow code snippet**
+```java
+SomeClass<?> someObj = new SomeClass<B>();
+//but
+someObj.someMethod(new A());//not allowed
+someObj.someMethod(new B());//not allowed
+someObj.someMethod(null);
+```
+Ans. ? represents no type. So A,B are definetely not type of ?. Hence only null is allowed.
+
+**Q70. What is the advantage of code given in Q69?**
+<br/>Ans. If we write the above code in following way;
+```java
+SomeClass<B> someBObj = new SomeClass<B>();
+someBObj.someMethod(new B());
+someBObj.someMethod(new B());
+:
+SomeClass<?> readOnlyList = someBObj;
+B b = (B) readOnlyList.get(0);
+```
+
+**Q71. Will the following class compile? If not, why?**
+```java
+public final class Algorithm {
+    public static <T> T max(T x, T y) {
+        return x > y ? x : y;
+    }
+}
+```
+Ans. No. The greater than (>) operator applies only to primitive numeric types.
+
+**Q72: Does following code is valid?**
+```java
+T t = new T();
+
+//or
+class Foo<T> {
+ public void doSomething(T t) {
+ 	t.sort();
+ }
+}
+```
+Ans. As T is unkown, above code is not allowed. However following code can be used instead;
+```java
+class Foo<T extends SomeClass> {
+ public void doSomething(T t) {
+ 	t.sort();//  sort method presents in SomeClass
+ }
+}
+```
