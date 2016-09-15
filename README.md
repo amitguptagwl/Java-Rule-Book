@@ -127,55 +127,39 @@ Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-B
 
 ####Generics 
 
-* Type safety = One type only
 * If B extends A, means B is-a type of A, doesn't mean `SomeClass<B>` is-a type of `SomeClass<A>`. So
-```java
-Class A{}
-Class B extends A{}
-Class SomeClass<T>{
-  T someMethod(T t){...};
-}
+* Unbounded Wildcard: `SomeClass<B>` can be assigned to `SomeClass<?>`.
 
-SomeClass<A> someAObj = new SomeClass<B>(); //is not allowed
-//but
-SomeClass<A> someAObj = new SomeClass<A>();
-someAObj.someMethod(new A());
-someAObj.someMethod(new B());
-```
+<p text-align="center">
+<img src="https://docs.oracle.com/javase/tutorial/figures/java/generics-wildcardSubtyping.gif"/>
+</p>
 
-* Unbounded Wildcard: `SomeClass<B>` can be assigned to `SomeClass<?>`. However in case of `SomeClass<?>`, somemethod can accept `null` only.
+* If A extends B, means B is-a type of A, then `B<E>` is-a type of `A<E>`
+* **Upper Bounded Wildcards**(covariance or Narrowing a reference): If A extends B, means B is-a type of A, also means that `SomeClass<B>` is-a type of `SomeClass<? extends A>`.
+* **Lower Bounded Wildcards**(contravariance or Widening a reference): `? super T` means T and all classes which are parent of T.
+* Multiple bounds: `<T extends A & B>`
+* Capture: At the time generic method call, type should be known;
 ```java
-SomeClass<?> someObj = new SomeClass<B>();
-//but
-someObj.someMethod(new A());//not allowed
-someObj.someMethod(new B());//not allowed
-someObj.someMethod(null);
+List<? extends Fruit> fruits = new ArrayList<Fruit>();
+fruits.set(0, fruits.get(0));//Compile time error
 ```
-It can be divided as below;
-```java
-SomeClass<B> someBObj = new SomeClass<B>();
-someBObj.someMethod(new B());
-someBObj.someMethod(new B());
-:
-SomeClass<?> someAObj = someBObj;
-//but
-someAObj.someMethod(new A());//not allowed
-someAObj.someMethod(new B());//not allowed
-someAObj.someMethod(null);
-```
-
-* If A extends B, means B is-a type of A, then B<E> is-a type of A<E>
-* Upper Bounded Wildcards: If A extends B, means B is-a type of A, also means that SomeClass<B> is-a type of SomeClass<? extends A>
-* Lower Bounded Wildcards: 
 * Type inference: `List<A> list = new ArrayList<>()` and `list.<A>add(a); list.add(a);` are allowed
-* `? extends T` =  a subtype of the type T
-* `? super T` = 
-Generics are not covariant. They are invariant
+* **Erasure**: During the type erasure process, the Java compiler erases all type parameters and replaces each with its first bound if the type parameter is bounded, or Object if the type parameter is unbounded.
+* Cannot Instantiate Generic Types with Primitive Types
+* Cannot Declare Static Fields of Parameterized Types
+* Cannot Use Casts or instanceof of Parameterized Types
+* Cannot Create Arrays of Parameterized Types 
+* Cannot Create, Catch, or Throw Objects of Parameterized Types
+* Since T is unknown at compilation time, following is not allowed
+* Wildcards guideines
+ * Use the ? extends wildcard if you need to retrieve object from a data structure
+ * Use the ? super wildcard if you need to put objects in a data structure
+ * If you need to do both things, don’t use any wildcard.
 
 
 ####Files 
 TODO
-
+
 ####Networking
 TODO
 
