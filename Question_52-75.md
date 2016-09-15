@@ -176,7 +176,11 @@ fruits.add(new Apple());
 fruits.add(new Strawberry());
 
 List<Fruit> fruits = new ArrayList<Apple>();//Compilation Error: not allowed
+```
+<br/>Ans. As per Generics rule, List<Apple> is not sub-type of List<Fruit>.
 
+**Q66. Explain below code**
+```java
 List<? extends Fruit> fruits = new ArrayList<Apple>();
 fruits.add(new Strawberry()); //Compile time error
 fruits.add(new Fruit()); //Compile time error
@@ -188,6 +192,7 @@ fruits.add(new Fruit()); //Compile time error
 fruits.add(new Apple()); 
 
 ```
+<br/>Ans. As per Generics rule, List<Apple> is sub-type of List<? extends Fruit>.
 
 ```java
 Apple[] apples = new Apple[1];
