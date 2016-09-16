@@ -83,7 +83,7 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 1. NEW -> RUNNABLE <-> BLOCKED/WAITING/TIMED_WAITING -> TERMINATED
 2. More than 1 thread can’t access same monitor at a time, if both are in running state. (Same monitor means who has same memory address)
 3. `synchronized method(…` or `Synchronized(this)` locks object itself. Hence `static synchronized method(…` takes lock on whole class. ([External locks](https://articlestack.wordpress.com/2016/01/23/java-multithreading-external-locks/) or ReentrantLock/ReadWriteLock seems better than synchronized blocks)
-4. `notify()` or `notifyAll()`, and `wait()` must be in a synchronized block for the object you are waiting on. And the value of the object must not be changed. `notify()` or `notifyAll()` to awake threads which are waiting. `interrupt()` to awake thread which is sleeping.
+4. `notify()` or `notifyAll()`, and `wait()` must be in a synchronized block for the object you are waiting on(Otherwise you'll et `IllegalMonitorException`). And the value of the object must not be changed. `notify()` or `notifyAll()` to awake threads which are waiting. `interrupt()` to awake thread which is sleeping.
 5. `sleep()` doesn't release the lock. So other threads are supposed to wait<br />**mutual exlusion**: `wait()` release the lock and acquire it again once relevant `notify()` is called. ([CyclicBarrier](https://articlestack.wordpress.com/2016/01/23/cyclicbarrier/) can be used to wait N threads at a time. CountDownLatch can be used to wait N starting threads. `join` can be used to wait until respective thread is completed. `Semaphore` is used to controll number of threads. )
 6. Doubles and longs assignment is not atomic. Mark them `volatile` or synchronized their assignment.
 7. [**daemon threads**](https://github.com/NaturalIntelligence/Practical-Java/tree/master/Concurrency/src/os/nushi/concurrency/tracer): (eg garbage collector) killed by JVM once all user threads are finished. JVM will exit when only daemon threads remain. If parent thread is daemon, child thread will also be. 8. `Thread.yield()` gives the scheduler a hint that the current thread is willing to free the processor.
@@ -150,14 +150,13 @@ fruits.set(0, fruits.get(0));//Compile time error
 * Cannot Use Casts or instanceof of Parameterized Types
 * Cannot Create Arrays of Parameterized Types 
 * Cannot Create, Catch, or Throw Objects of Parameterized Types
-* Since T is unknown at compilation time, following is not allowed
 * Wildcards guideines
  * Use the ? extends wildcard if you need to retrieve object from a data structure
  * Use the ? super wildcard if you need to put objects in a data structure
  * If you need to do both things, don’t use any wildcard.
 
 
-####Files 
+####I/O
 TODO
 
 ####Networking
