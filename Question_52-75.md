@@ -83,6 +83,52 @@ System.out.println("->" +s.myMethod());
 1. Since finally block runs ever whether any exception occurs or not so return statements inside try &amp; catch will be ignored. But their expression will be executed (like in above example ++i &amp; i++). <br />Since, in above program, finally returns program control to parent caller and return in try block doesn’t get completed so it gives abnormal completion warning.
 2. Above code can give **Unreachable code** compilation error if there is any statement after finally block.
 
+**Q61. What will be the output of below program?**
+```java
+public static int method(){
+	int i = 1;
+	try{
+		i++;
+		return ++i;
+	}catch(Exception e){
+		i++;
+		return ++i;
+	}finally{
+		i++;
+		System.out.println(i);
+		return ++i;
+	}
+}
+
+System.out.println(method());
+```
+<br />Ans. 
+<br />4
+<br />5
+
+**Q62. What will be the output of below program?**
+```java
+public static int method(){
+	int i = 1;
+	try{
+		i++;
+		return ++i;
+	}catch(Exception e){
+		i++;
+		return ++i;
+	}finally{
+		i++;
+		System.out.println(i);
+	}
+}
+
+System.out.println(method());
+```
+<br />Ans. 
+<br />4
+<br />3
+
+
 **Serialization**
 
 ```java
@@ -127,7 +173,7 @@ Deserialing
 Grand Parent
 ```
 
-**Q61. If C extends B extends A where**
+**Q63. If C extends B extends A where**
 
 1. A is serializable
 2. B is serializable
@@ -143,7 +189,7 @@ Grand Parent
 3. No constructor call
 4. A() then B()
 
-**Q62. If C extends B extends A where**
+**Q64. If C extends B extends A where**
 
 1. A is serializable
 2. B is serializable
@@ -163,13 +209,13 @@ Where A has no default constructor but parameterized constructor().
 
 **Enum**
 
-**Q63. Why an enum can not extend another enum or class but an interface while the java compiler translates it into class later?**
+**Q65. Why an enum can not extend another enum or class but an interface while the java compiler translates it into class later?**
 <br />And. As per Enum rule and inheritance, it already extends Enum<T>. That class provides all the enum functionality. 
 
-**Q64. Whether an enum can have abstract methods?**
+**Q66. Whether an enum can have abstract methods?**
 <br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract
 
-**Q65. Explain below code**
+**Q67. Explain below code**
 ```java
 List<Fruit> fruits = new ArrayList<Fruit>();
 fruits.add(new Apple());
@@ -179,7 +225,7 @@ List<Fruit> fruits = new ArrayList<Apple>();//Compilation Error: not allowed
 ```
 <br/>Ans. As per Generics rule, List<Apple> is not sub-type of List<Fruit>. But since Apple,Strawberry are type of Fruit List.add() allows any type of Fruit.
 
-**Q66. Explain below code**
+**Q68. Explain below code**
 ```java
 Apple[] apples = new Apple[1];
 Fruit[] fruits = apples;
@@ -208,7 +254,7 @@ apples.add(new Apple());
 <br />But while reading, you can't guarantee what will come out. However it is guaranteed to be Object.
 <br />While adding, since list of apples can point either list of apples itself or the list of it's super classes so any object of Apple or it's subtype can be added. But instance of Fruit or it's other type can't be added.
 
-**Q67. What is the following class converted to after type erasure?**
+**Q69. What is the following class converted to after type erasure?**
 ```java
 public class Pair<K, V> {
 
@@ -247,7 +293,7 @@ public class Pair {
 }
 ```
 
-**Q68. What is the following method converted to after type erasure?**
+**Q70. What is the following method converted to after type erasure?**
 ```java
 public static <T extends Comparable<T>>
     int findFirstGreaterThan(T[] at, T elem) {
@@ -261,7 +307,7 @@ public static int findFirstGreaterThan(Comparable[] at, Comparable elem) {
     // ...
 }
 ```
-**Q69. Justify bewlow code snippet**
+**Q71. Justify bewlow code snippet**
 ```java
 SomeClass<?> someObj = new SomeClass<B>();
 //but
@@ -271,7 +317,7 @@ someObj.someMethod(null);
 ```
 Ans. ? represents no type. So A,B are definetely not type of ?. Hence only null is allowed.
 
-**Q70. What is the advantage of code given in Q69?**
+**Q72. What is the advantage of code given in Q69?**
 <br/>Ans. If we write the above code in following way;
 ```java
 SomeClass<B> someBObj = new SomeClass<B>();
@@ -282,7 +328,7 @@ SomeClass<?> readOnlyList = someBObj;
 B b = (B) readOnlyList.get(0);
 ```
 
-**Q71. Will the following class compile? If not, why?**
+**Q73 Will the following class compile? If not, why?**
 ```java
 public final class Algorithm {
     public static <T> T max(T x, T y) {
@@ -292,7 +338,7 @@ public final class Algorithm {
 ```
 Ans. No. The greater than (>) operator applies only to primitive numeric types.
 
-**Q72: Does following code is valid?**
+**Q74: Does following code is valid?**
 ```java
 T t = new T();
 
@@ -311,3 +357,10 @@ class Foo<T extends SomeClass> {
  }
 }
 ```
+**NIO**
+
+**Q75: Why FileChannel can't be use with Selector?**
+<br /> Ans: As FileChannel is blocking, by the rules, it can't be used with Selectors.
+
+**Q76: Does NIO are always faster than IO?**
+<br /> Ans: As NIO use less threads, it saves time and memory in thread(context) switching. Even the CPU utilization is less. But performance completely depends on what way code is written and what is being performed. In general NIO are faster.
