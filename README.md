@@ -173,7 +173,19 @@ TODO
   * *Reflexivity*: For all non-null references, a.equals(a)
   * *Transitivity*: If a.equals(b) and b.equals(c), then a.equals(c)
   * *Consistency* with hashCode(): Two equal objects must have the same hashCode() value
-3. JVM(How to run) is the subset of JRE (where to run) is the subset of JDK (develop, compile, package ...).
+3. JVM(How to run) is the subset of JRE (where to run) is the subset of JDK (develop, debug, compile, package ...).
+ * JVM has JIT, clasloader, 
+   * JIT(Just In Time) compiler coverts bytecode('write once and run anywhere') into machine specific instractions.
+ * JRE has JVM, compiled libraries, libraries to display & run applets on browsers, alone, or with JWS(Java Web Start,  which deploys standalone applications over a network.)
+4. A file saved with `.java` extension can have different name than actual class name. So it can also have multiple classes. But compiled class files will be according to class name.
+
+
+####Class loader
+<img src="https://2.bp.blogspot.com/-HCTsr-j_ojw/USTOh1f8JwI/AAAAAAAAAjg/YegPspR5K48/s400/java_classloader_hierarchy.PNG" align="right" />
+A class is loaded in Java, when its needed. The sequence of class loader is from top to bottom in diagram.
+
+First request to load a class goes to application class loader which is delegated to parent loaders. If the class is not found or no unique class is found by a loader then it passes to child loader to findClass. if no loader finds unique class, it throws `java.lang.ClassNotFoundException`.
+
 
 ####Memory
 <img src="http://i.stack.imgur.com/uDdEk.png" width="400" align="right" />
