@@ -100,7 +100,7 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 
 ####Exception
 1. **try** must be followed by either **catch** or **finally** or both
-2. finally is always called.
+2. finally is always called. So if `try` and `finally` both have return statement then `return` statement of `try` will be executed but will not return the control.
 3. Only 1 catch block is called start from top to bottom.
 4. If you call a method throwing some exception, either you need to catch the same or wider exception or throw it again.
 
@@ -156,9 +156,13 @@ fruits.set(0, fruits.get(0));//Compile time error
  * If you need to do both things, don’t use any wildcard.
 
 
-####I/O
-TODO
-
+####IO & NIO
+<img src="http://s22.postimg.org/4u4vkcqn5/NIO.png" width="250" align="right" alt="Java NIO"/>
+* **Asynchronous**: a non-CPU paralel operation (Eg JS XmlHttpRequest)
+* Channel must be in non-blocking mode to be used with a Selector. (Hence FileChannel can't be used with a Selector )
+* Scatter / gather are concepts used in reading from, and writing to channels.
+* NIO use 1 thread to access multiple channels (sockets may be) using Selectors. IO uses one thread per socket.
+
 ####Networking
 TODO
 
