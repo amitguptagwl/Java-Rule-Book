@@ -178,6 +178,7 @@ TODO
    * JIT(Just In Time) compiler coverts bytecode('write once and run anywhere') into machine specific instractions.
  * JRE has JVM, compiled libraries, libraries to display & run applets on browsers, alone, or with JWS(Java Web Start,  which deploys standalone applications over a network.)
 4. A file saved with `.java` extension can have different name than actual class name. So it can also have multiple classes. But compiled class files will be according to class name.
+5. Only class members are assigned with default value.
 
 
 ####Class loader
