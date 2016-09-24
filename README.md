@@ -66,6 +66,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 6. Members can have same name or method signature. In case of ambiguity, *this* is used to represent current class' members and super is used to represent members of parent class. Otherwise the closest declaration will be referred.
 7. Until or unless there is no ambiguity of method's declaration inheritance is allowed. (Hence a class can't extend multiple classes but can implement multiple interfaces. Similarly it can extend a class and implement an interface which has methods with same signature.)
 8. Child class can't narrow down the scope of method while overriding. (A subclass should always satisfy the contract of the superclass. See Liskov Substitution principle.)
+9. **covariant** return type: if child-class is overriding a method(), it can return return either object A or B, where B is sub-class of A.
 
 ####Garbage Collector
 1. It fragment and release only heap memory not stack memory.
@@ -100,9 +101,10 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 
 ####Exception
 1. **try** must be followed by either **catch** or **finally** or both
-2. finally is always called. So if `try` and `finally` both have return statement then `return` statement of `try` will be executed but will not return the control.
+2. finally is always called(until program stops due to fatal error or `System.exit()`). So if `try` and `finally` both have return statement then `return` statement of `try` will be executed but will not return the control.
 3. Only 1 catch block is called start from top to bottom.
 4. If you call a method throwing some exception, either you need to catch the same or wider exception or throw it again.
+5. **Checked exceptions** are checked at compile-time(e.g.IOException,SQLException). But Unchecked exceptions are not.
 
 ####String
 1. == checks for reference only.
