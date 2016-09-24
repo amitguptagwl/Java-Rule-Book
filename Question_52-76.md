@@ -1,5 +1,3 @@
-##In Progress
-
 **Q52. If B extends A and you create object of B where default constructor of A throws some exception then whether object of B would be created?**
 <br />Ans. As per Inheritance rule, child class needs to call `super()` on first line of it's constructor. But as per Exception rule, it needs to be handled or throwwn. So child class constructor will have to throw it again. [See](http://stackoverflow.com/a/28678358/453767). If there is not runtime exception then the object will be created.
 
