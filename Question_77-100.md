@@ -186,3 +186,29 @@ class MemoryModel{
 <br/>false
 <br/>false
 <br/>true
+
+**Q63. What is difference between 2 code snippets?**
+```java
+  String name;
+    
+    public MemoryModel() {
+		name="amit";
+	}
+```
+And 
+```java
+	String name="amit";
+```
+<br/>Ans. Both code will compile to same byte code. So no difference.
+
+**Q64. How many objects will be created in below snippet?**
+```java
+String three ="three";
+String s = "one" + "two" + three;
+```
+Ans. Above code would be tranformed to;
+```java
+String s = new StringBuilder("onetwo").append(three).toString();
+```
+So there will 2 objects created for String constant in String pool "onetwo" and "three". Then 1 object s will be created in local variable array.
+
