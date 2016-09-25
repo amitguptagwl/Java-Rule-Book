@@ -1,8 +1,8 @@
 ##In Progress
-**Q52. Why checked exceptions are required be handled?**
+**Q77. Why checked exceptions are required be handled?**
 <br />Ans. No matter how good you are in coding, there is always a chance of exception due to external events. Eg. drive is not monuted, internet connection is lost, or thread is interuppted etc. Such cases are supposed to be handled.
 
-**Q53. How many objects will be created in the following code?**
+**Q78. How many objects will be created in the following code?**
 
 ```java
 String s1="Welcome";  
@@ -11,7 +11,7 @@ String s3="Welcome";
 ```
 <br />Ans. Since all 3 reference ar pointing to same string literal, there will be one String literal created in String Pool. Now if this code is written in some method then 3 references will be created in local variable array of JVM frame. Otherwise, if s1,s2, and s3 class fields then 3 references will be created in Constant Pool.
 
-**Q54. How many objects will be created in the following code?**
+**Q79. How many objects will be created in the following code?**
 ```java
 String welcome = "Welcome";
 String s = new String(welcome);
@@ -25,7 +25,7 @@ String s = new String("Welcome");
 1. Two objects, As soon as compiler finds literal in program, it checks if identical String already exists in **String constant pool**. If not, it creates one. This referance will be passed to `new String(String)`. `new` will create another object in non-pool(heap). However reference `welcome`, and `s` will be pointing to same value.
 2. This is same as above. But it has only one reference ie `s`.
 
-**Q55. How many objects will be created in the heap and non-heap memory area in following code?**
+**Q80. How many objects will be created in the heap and non-heap memory area in following code?**
 ```java
 String te = "te";
 String st = "st";
@@ -37,14 +37,14 @@ Will we find "test" as simple text if we take memory dump?
 <br/>Since String constant pool has 2 literals "te", and "st" not "test", you'll not see "test" string in memory dump. Moreover, from JDK7 onwards, String contants can be GCed.
 
 
-**Q56. We are reading 50 string properties from a property file, and assigning them Property class object. How many constants will be created in String Constant Pool?**
+**Q81. We are reading 50 string properties from a property file, and assigning them Property class object. How many constants will be created in String Constant Pool?**
 <br />Ans. 0. A string value takes place in constant pool at compilation phase when compiler finds a string literal somewhere in the code.
 
-**Q57. Why is char[] preferred over String for passwords?**
+**Q82. Why is char[] preferred over String for passwords?**
 <br />Ans. when we log/print char[], it's hashcode is printed not the actual string.
 <br />Strings are like plain test in memory whether in heap area or in non-hea area. So they can be read on memory dump until GCed.
 
-**Q58. What will be the output of following program?**
+**Q83. What will be the output of following program?**
 ```java
 String a = "text";
 String b = new String("text");
@@ -61,7 +61,7 @@ System.out.println(a == c);
 
 == is used to check the equality of reference. As per String literal rules, Literal strings in any class of any package represent references to the same String object. Hence a,c are pointing to same object. intern() return the object from String pool. So a,b,c are equal in last.
 
-**Q59. What will be the output of following program?**
+**Q84. What will be the output of following program?**
 ```java
 class MemoryModel { final String s = "abc"; String s5 = "abc";}
 
@@ -77,7 +77,7 @@ System.out.println(mm.s5.hashCode() == "abc".hashCode());
 <br/>true
 <br/>true
 
-**Q60. Explain the memory distribuion for below code**
+**Q85. Explain the memory distribuion for below code**
 ```java
 class MemoryModel{
   public method(){
@@ -93,7 +93,7 @@ class MemoryModel{
 <br/>Ans. Since all the variables are created in method. Nothing will go to Constant Pool. Instead, JVM will create objects for "abc", "def", and "abcdef" in String Literal Pool. And it'll create reference s,s1,s2,s3,s4 in Local variable array of JVM Frame for method(). 
 
 
-**Q61. What will be the output?**
+**Q86. What will be the output?**
 ```java
 class MemoryModel{
   public method(){
@@ -145,7 +145,7 @@ Now since "Literal strings in any class of any package represent references to t
 <br/>false
 
 
-**Q62. What will be the output?**
+**Q87. What will be the output?**
 ```java
 class MemoryModel{
   public method(){
@@ -187,7 +187,7 @@ class MemoryModel{
 <br/>false
 <br/>true
 
-**Q63. What is difference between 2 code snippets?**
+**Q88. What is difference between 2 code snippets?**
 ```java
   String name;
     
@@ -201,7 +201,7 @@ And
 ```
 <br/>Ans. Both code will compile to same byte code. So no difference.
 
-**Q64. How many objects will be created in below snippet?**
+**Q89. How many objects will be created in below snippet?**
 ```java
 String three ="three";
 String s = "one" + "two" + three;
