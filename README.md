@@ -27,12 +27,14 @@ Basic concepts of Java to answer any question about how Java works specially in 
 4. Declaration of any member is fully independent from any other class/interface.
 5. Can have static member and static block which are executed first in the class and top to bottom.
 6. All classes has default constructor, with no statement inside, by default until you create any constructor manually.
+7. It can have nested static interface.
 
 ####Interface
 1. It's all member fields are **public** (since has no implementation private fields can't be used), **final** (since interfance can't be instanciated they can have only 1 value) **static** (since interfance can't be instanciated and member field are not the responsibilities for other class).
 2. Methods are public only and can’t be static. (Interface defines external responsibilities (hence public) which may be different for each class (hence non-static).)
 3. There is no functionality/implementation, but responsibilities, to be implemented by child class type (class itself or its parent class). So implicitly *abstract* keyword and modifier are optional.
 4. Can extend only 1 interface.
+5. It can have nested class.
 
 #####Common Rules for Concrete class and Interface
 1. Cannot extend/implement itself or one of its own member types. If it inherits itself it creates Cycle. If it inherits any child then its hierarchy in inheritance tree becomes inconsistent.
@@ -116,6 +118,7 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
  * Literal strings in any class of any package represent references to the same String object.
  * Strings computed by constant expressions are computed at compile time and then treated as if they were literals.
  * A string literal always refers to the same instance of class String.
+6. StringBuffer can be considered as thread safe StringBuilder. Both are mutable unlike String. Java uses StringBuilder to concatenate string because it is mutable.
 
 ####Enum 
 1. Is Self-Type. Declared as  Enum< E extends Enum< E>>
