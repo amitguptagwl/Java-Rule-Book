@@ -63,12 +63,12 @@ Basic concepts of Java to answer any question about how Java works specially in 
 ####Inheritance
 1. A class/interface can reference its own instance or any child class instance whichever can be instantiated. (It means a child class can’t refer to its base class instance.)
 2. A reference can call method of referred instance only.
-3. Child class need not to throw an exception while overriding a method, it is automatically get thrown by child class method.
+3. Child class need not to throw an exception while overriding a method, it is automatically get thrown by parent class method.
 4. Super() must be first statement in child class constructor. If you don’t call super() explicitly, compiler automatically adds empty super().
 5. Members can have same name or method signature. In case of ambiguity, *this* is used to represent current class' members and super is used to represent members of parent class. Otherwise the closest declaration will be referred.
 6. Until or unless there is no ambiguity of method's declaration inheritance is allowed. (Hence a class can't extend multiple classes but can implement multiple interfaces. Similarly it can extend a class and implement an interface which has methods with same signature.)
 7. Child class can't narrow down the scope of method while overriding. (A subclass should always satisfy the contract of the superclass. See Liskov Substitution principle.)
-8. **covariant** return type: if child-class is overriding a method(), it can return return either object A or B, where B is sub-class of A.
+8. **covariant** return type: if child-class is overriding a method(), it can return either object A or B, where B is sub-class of A.
 
 ####Garbage Collector
 1. It fragment and release only heap memory not stack memory.
@@ -90,7 +90,8 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 4. `notify()` or `notifyAll()`, and `wait()` must be in a synchronized block for the object you are waiting on(Otherwise you'll et `IllegalMonitorException`). And the value of the object must not be changed. `notify()` or `notifyAll()` to awake threads which are waiting. `interrupt()` to awake thread which is sleeping.
 5. `sleep()` doesn't release the lock. So other threads are supposed to wait<br />**mutual exlusion**: `wait()` release the lock and acquire it again once relevant `notify()` is called. ([CyclicBarrier](https://articlestack.wordpress.com/2016/01/23/cyclicbarrier/) can be used to wait N threads at a time. CountDownLatch can be used to wait N starting threads. `join` can be used to wait until respective thread is completed. `Semaphore` is used to controll number of threads. )
 6. Doubles and longs assignment is not atomic. Mark them `volatile` or synchronized their assignment.
-7. [**daemon threads**](https://github.com/NaturalIntelligence/Practical-Java/tree/master/Concurrency/src/os/nushi/concurrency/tracer): (eg garbage collector) killed by JVM once all user threads are finished. JVM will exit when only daemon threads remain. If parent thread is daemon, child thread will also be. 8. `Thread.yield()` gives the scheduler a hint that the current thread is willing to free the processor.
+7. [**daemon threads**](https://github.com/NaturalIntelligence/Practical-Java/tree/master/Concurrency/src/os/nushi/concurrency/tracer): (eg garbage collector) killed by JVM once all user threads are finished. JVM will exit when only daemon threads remain. If parent thread is daemon, child thread will also be. 
+8. `Thread.yield()` gives the scheduler a hint that the current thread is willing to free the processor.
 
 **busy waiting**: wait for an event by performing some active computations that let the thread/process occupy the processor. Eg looping long time to wait instead of using `Thread.sleep()`.
 <br/>**ThreadLocal**: allows you to have a variable that will be unique to a given thread. (Thus, if the same code runs in different threads, these executions will not share the value, but instead each thread has its own variable that is local to the thread.)
@@ -113,7 +114,7 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 
 ####String
 1. == checks for reference only.
-2. It overrides equals() which checks for value only. and hashcode().
+2. It overrides equals() which checks for value and hashcode().
 3. Immutable so treated as constant by JVM.
 4. **Intern**: When the compiler encounters a String literal, it checks to see if an identical String already exists in the pool, otherwise creates it. (String pool always have unique values.). String.intern() does the same job.
 5. **String Pool (String Constant/Memory/Literals Pool)**
