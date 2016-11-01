@@ -10,7 +10,7 @@ Basic concepts of Java to answer any question about how Java works specially in 
 ##Rules (upto Java 7)
 
 ####Final
-1. No further change ( So should be assigned either the time of declaration or in of same constructor)
+1. No further change ( So should be assigned either the time of declaration or in constructor)
 2. JVM allocates same memory location for same constants.
 3. constant expressions are computed at compile time
 
@@ -61,15 +61,14 @@ Basic concepts of Java to answer any question about how Java works specially in 
 2. Can access only final external object/var. (as the values of non-final variable can be changed, the behaviour of annonymous class will be unpredictable.)
 
 ####Inheritance
-1. A class/interface can reference its own instance or any child class instance whichever can be instantiated.
-2. A child class can’t refer to its base class instance.
-3. A reference can call method of referred instance only.
-4. Child class need not to throw an exception while overriding a method, it is automatically get thrown by child class method.
-5. Super() must be first statement in child class constructor. If you don’t call super() explicitly, compiler automatically adds empty super().
-6. Members can have same name or method signature. In case of ambiguity, *this* is used to represent current class' members and super is used to represent members of parent class. Otherwise the closest declaration will be referred.
-7. Until or unless there is no ambiguity of method's declaration inheritance is allowed. (Hence a class can't extend multiple classes but can implement multiple interfaces. Similarly it can extend a class and implement an interface which has methods with same signature.)
-8. Child class can't narrow down the scope of method while overriding. (A subclass should always satisfy the contract of the superclass. See Liskov Substitution principle.)
-9. **covariant** return type: if child-class is overriding a method(), it can return return either object A or B, where B is sub-class of A.
+1. A class/interface can reference its own instance or any child class instance whichever can be instantiated. (It means a child class can’t refer to its base class instance.)
+2. A reference can call method of referred instance only.
+3. Child class need not to throw an exception while overriding a method, it is automatically get thrown by child class method.
+4. Super() must be first statement in child class constructor. If you don’t call super() explicitly, compiler automatically adds empty super().
+5. Members can have same name or method signature. In case of ambiguity, *this* is used to represent current class' members and super is used to represent members of parent class. Otherwise the closest declaration will be referred.
+6. Until or unless there is no ambiguity of method's declaration inheritance is allowed. (Hence a class can't extend multiple classes but can implement multiple interfaces. Similarly it can extend a class and implement an interface which has methods with same signature.)
+7. Child class can't narrow down the scope of method while overriding. (A subclass should always satisfy the contract of the superclass. See Liskov Substitution principle.)
+8. **covariant** return type: if child-class is overriding a method(), it can return return either object A or B, where B is sub-class of A.
 
 ####Garbage Collector
 1. It fragment and release only heap memory not stack memory.
