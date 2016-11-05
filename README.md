@@ -186,9 +186,9 @@ TODO
   * *Reflexivity*: For all non-null references, a.equals(a)
   * *Transitivity*: If a.equals(b) and b.equals(c), then a.equals(c)
   * *Consistency* with hashCode(): Two equal objects must have the same hashCode() value
-3. JVM(How to run) is the subset of JRE (where to run) is the subset of JDK (develop, debug, compile, package ...).
+3. **JVM**(How to run) is the subset of **JRE** (where to run) is the subset of **JDK** (develop, debug, compile, package ...).
  * JVM has JIT, clasloader, 
-   * JIT(Just In Time) compiler coverts bytecode('write once and run anywhere') into machine specific instractions.
+   * **JIT**(Just In Time) compiler coverts bytecode('write once and run anywhere') into machine specific instructions and links with other compiled machine code(object code) to save compilation time of same code. Sometimes it also do adaptive optimization by inlining function calls, remove branches etc.
  * JRE has JVM, compiled libraries, libraries to display & run applets on browsers, alone, or with JWS(Java Web Start,  which deploys standalone applications over a network.)
 4. A file saved with `.java` extension can have different name than actual class name. So it can also have multiple classes. But compiled class files will be according to class name.
 5. Only class members are assigned with default value.
