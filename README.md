@@ -129,7 +129,6 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 
 ####Collection/Map
 Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-Book/blob/master/collections.pdf) for better understanding;
-
 1. **HashMap**: key is used to calculate a hash which is used then to find a bucket where that particular key is stored. If there are multiple objects in the same bucket they are stored in linked list( balanced tree after a threshhold in java8) and equals() is used to get an element.
 2. **WeakHashMap**: Same as HashMap but entries can be garbage collected.
 3. **IdentityHashMap**: Same as HashMap but == is used instead of equals()
@@ -171,9 +170,12 @@ fruits.set(0, fruits.get(0));//Compile time error
 
 ####IO & NIO
 <img src="http://s22.postimg.org/4u4vkcqn5/NIO.png" width="250" align="right" alt="Java NIO"/>
-* **Asynchronous**: a non-CPU paralel operation (Eg JS XmlHttpRequest)
-* Channel must be in non-blocking mode to be used with a Selector.
-* Scatter / gather are concepts used in reading from, and writing to channels.
+* **Asynchronous**: a non-CPU paralel operation with the caller(Eg JS XmlHttpRequest)
+* Stream I/O are sequential. Like: printer port, network port etc.
+* **File Descriptor**: A handle (saved as temporary file) to access a file, network socket etc. Number of open files or open network connection equal to number of FDs on disk.
+* **Channel** is a nexus for I/O operations. It represents an open connection to an entity which can perform IO operation. It can be synchronous(blocking) or asynchronous(non-blocking). 
+* **Selector** is a central object to analyze various asynchronous(non-blocking) Channel. (Since file operations are blocking IO operaion, you can't use FileChannel with a Selector)
+* Reading from a channel to buffers is caller **Scatter**.  Writing to a channel from buffers is called **Gather**.
 * NIO use 1 thread to access multiple channels (sockets may be) using Selectors. IO uses one thread per socket.
 
 ####Networking
