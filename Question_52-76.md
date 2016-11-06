@@ -213,6 +213,8 @@ Where A has no default constructor but parameterized constructor().
 **Q66. Whether an enum can have abstract methods?**
 <br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract
 
+**Generics**
+
 **Q67. Explain below code**
 ```java
 List<Fruit> fruits = new ArrayList<Fruit>();
