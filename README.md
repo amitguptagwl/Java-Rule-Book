@@ -141,11 +141,14 @@ Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-B
 Relating to group of similar things; not specific.
 
 <img src="https://docs.oracle.com/javase/tutorial/figures/java/generics-wildcardSubtyping.gif" align="right"/>
-* If B extends A, means B is-a type of A
- * But `SomeClass<B>` is-not a type of `SomeClass<A>`.
- * However `B<SomeClass>` is-a type of `A<SomeClass>`.
-* **Unbounded Wildcard**: `SomeClass<B>` can be assigned to `SomeClass<?>`.
-* **Upper Bounded Wildcards**(covariance or Narrowing a reference): `SomeClass<B>` is-a type of `SomeClass<? extends A>`.
+* If B,C extends A, 
+ * It means B is-a type of A. A[] a = new B[] is also allowed. But `a` can have instances of B only not of C.
+ * `ChildClass<B>` is-a type of `ParentClass<B>`. And `B<SomeClass>` is-a type of `A<SomeClass>`.
+ * But `SomeClass<B>` is-not-a type of `SomeClass<A>`. And `B<ChildClass>` is-not-a type of `A<ParentClass>` 
+* **Unbounded Wildcard**: `SomeClass<B>` can be assigned to `SomeClass<?>` (`SomeClass<? extends Object>`) .
+* **Upper Bounded Wildcards**(covariance or Narrowing a reference): 
+ * `SomeClass<B>` is-a type of `SomeClass<? extends A>`.
+ * `ChildClass<B>` is-a type of `ParentClass<? extends A>`
 * **Lower Bounded Wildcards**(contravariance or Widening a reference): `? super T` means T and all classes which are parent of T.
 * Multiple bounds: `<T extends A & B>`
 * Capture: At the time generic method call, type should be known;
@@ -155,14 +158,15 @@ fruits.set(0, fruits.get(0));//Compile time error
 ```
 * Type inference: `List<A> list = new ArrayList<>()` and `list.<A>add(a); list.add(a);` are allowed
 * **Erasure**: During the type erasure process, the Java compiler erases all type parameters and replaces each with its first bound if the type parameter is bounded, or Object if the type parameter is unbounded.
-* Cannot Instantiate Generic Types with Primitive Types
-* Cannot Declare Static Fields of Parameterized Types
-* Cannot Use Casts or instanceof of Parameterized Types
-* Cannot Create Arrays of Parameterized Types 
-* Cannot Create, Catch, or Throw Objects of Parameterized Types
+* Properties
+ * Cannot Instantiate Generic Types with Primitive Types
+ * Cannot Declare Static Fields of Parameterized Types
+ * Cannot Use Casts or instanceof of Parameterized Types
+ * Cannot Create Arrays of Parameterized Types 
+ * Cannot Create, Catch, or Throw Objects of Parameterized Types
 * Wildcards guideines
- * Use the ? extends wildcard if you need to retrieve object from a data structure
- * Use the ? super wildcard if you need to put objects in a data structure
+ * Use the `? extends` wildcard if you need to retrieve object from a data structure
+ * Use the `? super` wildcard if you need to put objects in a data structure
  * If you need to do both things, don’t use any wildcard.
 
 
