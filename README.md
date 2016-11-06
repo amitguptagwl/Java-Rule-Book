@@ -138,16 +138,14 @@ Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-B
 7. Sorted Map/Set (Tree Map/Set) requires item to be comparable.( It can help you to maintain insertion order.)
 
 ####Generics 
+Relating to group of similar things; not specific.
 
-* If B extends A, means B is-a type of A, doesn't mean `SomeClass<B>` is-a type of `SomeClass<A>`. So
-* Unbounded Wildcard: `SomeClass<B>` can be assigned to `SomeClass<?>`.
-
-<p text-align="center">
-<img src="https://docs.oracle.com/javase/tutorial/figures/java/generics-wildcardSubtyping.gif"/>
-</p>
-
-* If A extends B, means B is-a type of A, then `B<E>` is-a type of `A<E>`
-* **Upper Bounded Wildcards**(covariance or Narrowing a reference): If A extends B, means B is-a type of A, also means that `SomeClass<B>` is-a type of `SomeClass<? extends A>`.
+<img src="https://docs.oracle.com/javase/tutorial/figures/java/generics-wildcardSubtyping.gif" align="right"/>
+* If B extends A, means B is-a type of A
+ * But `SomeClass<B>` is-not a type of `SomeClass<A>`.
+ * However `B<SomeClass>` is-a type of `A<SomeClass>`.
+* **Unbounded Wildcard**: `SomeClass<B>` can be assigned to `SomeClass<?>`.
+* **Upper Bounded Wildcards**(covariance or Narrowing a reference): `SomeClass<B>` is-a type of `SomeClass<? extends A>`.
 * **Lower Bounded Wildcards**(contravariance or Widening a reference): `? super T` means T and all classes which are parent of T.
 * Multiple bounds: `<T extends A & B>`
 * Capture: At the time generic method call, type should be known;
