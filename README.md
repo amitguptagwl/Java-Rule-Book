@@ -9,17 +9,20 @@ Basic concepts of Java to answer any question about how Java works specially in 
 
 ## Rules (upto Java 7)
 
-#### Final
-1. No further change :no_entry_sign: ( So should be assigned either the time of declaration or in constructor)
+### Final :no_entry_sign:
+**Purpose**: Stop modification
+1. No further change ( So should be assigned either the time of declaration or in constructor)
 2. JVM allocates same memory location for same constants. :page_facing_up: :page_facing_up: (will be more clear in question answer sheet)
 3. constant expressions are computed at compile time.
 
-#### Static
+### Static :one:
+**Purpose**: Single shared copy
 1. Static members belongs to a class not any instance. --> (Static member doesn’t belong to any instance hence they can’t access instanced members.)
 2. One per class. Shared among all class instances. 
  a. Can’t be overridden. But are inherited.
 
-#### Concrete class
+### Concrete class :black_large_square:
+**Purpose**: Main actor
 1. All methods have some functionality.
 2. It cannot be static.
 3. Constructor gets called after initializing memory by JVM.
@@ -28,50 +31,51 @@ Basic concepts of Java to answer any question about how Java works specially in 
 6. All classes has default constructor, with no statement inside, by default until you create any constructor manually.
 7. It can have nested static interface.
 
-#### Interface
+#### Nested/inner class :black_square_button:
+1. Can access all members of container class.
+
+As per Concrete class rule 5 nested classes can be abstract, static, and static abstract .
+
+### Interface :dango:
 **Purpose**: Deifine the type and external responsibilities for a class.
 <br/> Interfaces are not ment to store a state so no data. So all the data variables are expected to have one value.
 1. Member/Data fields are 
-<br/>:bus: **public**: (design decision :no_mouth:) private variable can be used by members method only. But member methods don't have implementation.
-<br/>:one: **static**: No instance so 1 value only.
-<br/>:no_entry_sign: **final**: (design decision :no_mouth:) since data members are expected to have single value throughout, it should be **consistent**.
+   * :bus: **public**: (design decision :no_mouth:) private variable can be used by members method only. But member methods don't have implementation.
+   * :one: **static**: No instance so 1 value only.
+   * :no_entry_sign: **final**: (design decision :no_mouth:) since data members are expected to have single value throughout, it should be **consistent**.
 2. Member methods are;
-<br/>:bus: **public**: as per the purpose defined above
-<br/>:1234: **non-static**: because method implementation can be different for each class
-<br/> **abstract**
+   * :bus: **public**: as per the purpose defined above
+   * :1234: **non-static**: because method implementation can be different for each class
+   * **abstract**
 4. :one::arrow_up: Can extend only 1 interface. (same as class inheritance)
 5. It can have nested class.
 
 In *Java 8*
 1. Member methods can also be;
-<br/> **default** (a method with default implementation)
-<br/> :one: **static**
+   * **default** (a method with default implementation)
+   * :one: **static**
 
-##### Common Rules for Concrete class and Interface
-1. Cannot extend/implement itself or one of its own member types. If it inherits itself it creates Cycle. If it inherits any child then its hierarchy in inheritance tree becomes inconsistent.
-2. Represent the type of its child, sub-child and so on.
+#### Common Rules for Concrete class and Interface 
+1. Cannot extend/implement itself or one of its own member types. (If it inherits itself or one of it's child it'll create Cycle.)
+2. Represent the type of its child, sub-child and so on. (Duplicate in Inheritance rules)
 
-#### Abstract class
+### Abstract class
 1. Concrete class + Interface = Abstract class
- * Unlike concrete class, it can’t be instantiated.
- * Unlike interface, abstract methods can have any scope and *abstract* keyword is not optional.
- * Unlike interface, fields can’t be static and final.
+  * Unlike concrete class, it can’t be instantiated.
+  * Unlike interface, abstract methods can have any scope and *abstract* keyword is not optional.
+  * Unlike interface, fields can’t be static and final.
 
 (Like any simple java class, it may have simple member , static member, static block, constructor etc. It can extend/implement any concrete class, abstract class, or an interface.)
 
-##### Common Rules for Abstract class and Interface
+#### Common Rules for Abstract class and Interface
 1. Both can have 0 to N number of abstract methods.
 2. Both need not to implement abstract methods declared in their parent abstract class/interface.
 
-#### Nested/inner class
-1. Can access all members of container class.
-2. ~~An independent class inside a class which follows rule of a class member.~~ Concrete class rule 5 (So it can be abstract, static abstract, static)
-
-#### Anonymous class (closures)
+### Anonymous class (closures)
 1. Cannot be implemented by any class (as created dynamically)
 2. Can access only final external object/var. (as the values of non-final variable can be changed, the behaviour of annonymous class will be unpredictable.)
 
-#### Inheritance
+### Inheritance
 1. A class/interface can reference its own instance or any child class instance whichever can be instantiated. (It means a child class can’t refer to its base class instance.)
 2. A reference can call method of referred instance only.
 3. Child class need not to throw an exception while overriding a method, it is automatically get thrown by parent class method.
@@ -81,12 +85,8 @@ In *Java 8*
 7. Child class can't narrow down the scope of method while overriding. (A subclass should always satisfy the contract of the superclass. See Liskov Substitution principle.)
 8. **covariant** return type: if child-class is overriding a method(), it can return either object A or B, where B is sub-class of A.
 
-#### Garbage Collector
-1. It fragment and release only heap memory not stack memory.
-2. Whether you System.gc(); or objReference=null; it doesn’t invoke GC until JVM really needs it. But 2nd statement helps GC to collect object quickly.
-3. finalize() is called only when object memory is released from heap.
-
-#### Serialization
+### Serialization :recycle:
+**Purpose**: Transform a presentable form into raw(writable) form.
 1. Transient and static variables are skipped while serialization/deserialization. In alternate of Transient, a class can have *ObjectStreamField[] serialPersistentFields* of class members which can be serialized.
 2. While serialization process all default constructor of super classes are called. But deserialization calls default constructor of all non-serialized class from top of inheritance tree till it meets any serialized class. In addition, deserialization and it doesn’t call constructor of current class.
 3. At the time of deserialization, first empty constructor gets called then all deserialized values are assigned to relevant property.
@@ -94,7 +94,7 @@ In *Java 8*
 
 Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016/04/03/serialization-a-sci-fi-story/)
 
-#### Multithreading
+### Multithreading
 1. NEW -> RUNNABLE <-> BLOCKED/WAITING/TIMED_WAITING -> TERMINATED
 2. More than 1 thread can’t access same monitor at a time, if both are in running state. (Same monitor means who has same memory address)
 3. `synchronized method(…` or `Synchronized(this)` locks object itself. Hence `static synchronized method(…` takes lock on whole class. ([External locks](https://articlestack.wordpress.com/2016/01/23/java-multithreading-external-locks/) or ReentrantLock/ReadWriteLock seems better than synchronized blocks)
@@ -116,14 +116,14 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
 
 <br/>[Read](https://articlestack.wordpress.com/category/tutorial/java/multithreading/): [Important Terms](https://articlestack.wordpress.com/2016/01/19/java-multithreading/), [Synchronization & Deadlock](https://articlestack.wordpress.com/2016/01/20/synchronization/), [wait & notify](https://articlestack.wordpress.com/2016/01/20/java-multithreading-notify-wait/), [join](https://articlestack.wordpress.com/2016/01/23/java-multithreading-join/), [Test your threading code](Thread Tracer)
 
-#### Exception
+### Exception
 1. **try** must be followed by either **catch** or **finally** or both
 2. finally is always called(until program stops due to fatal error or `System.exit()`). So if `try` and `finally` both have return statement then `return` statement of `try` will be executed but will not return the control.
 3. Only 1 catch block is called start from top to bottom.
 4. If you call a method throwing some exception, either you need to catch the same or wider exception or throw it again.
 5. **Checked exceptions** are checked at compile-time(e.g.IOException,SQLException). But Unchecked exceptions are not.
 
-#### String
+### String
 1. == checks for reference only.
 2. It overrides equals() which checks for value and hashcode().
 3. Immutable so treated as constant by JVM.
@@ -134,11 +134,11 @@ Read: [Serialization – a Sci Fi story](https://articlestack.wordpress.com/2016
  * A string literal always refers to the same instance of class String.
 6. StringBuffer can be considered as thread safe StringBuilder. Both are mutable unlike String. Java uses StringBuilder to concatenate string because it is mutable.
 
-#### Enum 
+### Enum 
 1. Is Self-Type. Declared as  Enum< E extends Enum< E>>
 2. Can implement an interface.
 
-#### Collection/Map
+### Collection/Map
 Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-Book/blob/master/collections.pdf) for better understanding;
 1. **HashMap**: key is used to calculate a hash which is used then to find a bucket where that particular key is stored. If there are multiple objects in the same bucket they are stored in linked list( balanced tree after a threshhold in java8) and equals() is used to get an element.
 2. **WeakHashMap**: Same as HashMap but entries can be garbage collected.
@@ -148,7 +148,7 @@ Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-B
 6. List and Multimap allow duplicate items
 7. Sorted Map/Set (Tree Map/Set) requires item to be comparable.( It can help you to maintain insertion order.)
 
-#### Generics 
+### Generics 
 Relating to group of similar things; not specific.
 
 <img src="https://docs.oracle.com/javase/tutorial/figures/java/generics-wildcardSubtyping.gif" align="right"/>
@@ -181,7 +181,7 @@ fruits.set(0, fruits.get(0));//Compile time error
  * If you need to do both things, don’t use any wildcard.
 
 
-#### IO & NIO
+### IO & NIO
 <img src="http://s22.postimg.org/4u4vkcqn5/NIO.png" width="250" align="right" alt="Java NIO"/>
 * **Asynchronous**: a non-CPU paralel operation with the caller(Eg JS XmlHttpRequest)
 * Stream I/O are sequential. Like: printer port, network port etc.
@@ -191,10 +191,10 @@ fruits.set(0, fruits.get(0));//Compile time error
 * Reading from a channel to buffers is caller **Scatter**.  Writing to a channel from buffers is called **Gather**.
 * NIO use 1 thread to access multiple channels (sockets may be) using Selectors. IO uses one thread per socket.
 
-#### Networking
+### Networking
 TODO
 
-####Other
+### Other
 1. hashCode() returns same value for two objects if obj1.equals(obj2) is true. hashcode is used to narrow up the results of fast searching. But it doesn't gurantee that the objects are same.
 2. equals() method must exhibit the following properties:
   * *Symmetry*: For two references, a and b, a.equals(b) if and only if b.equals(a)
@@ -210,14 +210,14 @@ TODO
 5. Only class members are assigned with default value.
 
 
-#### Class loader
+### Class loader
 <img src="https://2.bp.blogspot.com/-HCTsr-j_ojw/USTOh1f8JwI/AAAAAAAAAjg/YegPspR5K48/s400/java_classloader_hierarchy.PNG" align="right" />
 A class is loaded in Java, when its needed. The sequence of class loader is from top to bottom in diagram.
 
 First request to load a class goes to application class loader which is delegated to parent loaders. If the class is not found or no unique class is found by a loader then it passes to child loader to findClass. if no loader finds unique class, it throws `java.lang.ClassNotFoundException`.
 
 
-#### Memory
+### Memory
 <img src="http://i.stack.imgur.com/uDdEk.png" width="400" align="right" />
 
 * **Heap Memory**: memory for all class instances and arrays. h= y+t ;  t=tenured, y=young, h=heap
@@ -238,7 +238,12 @@ First request to load a class goes to application class loader which is delegate
 
 Note: Sizes of each space can be controlled by different JVM parameters, like: NewRatio, NewSize, MaxNewSize, SurvivorRatio etc.
 
-#### JDBC
+### Garbage Collector
+1. It fragment and release only heap memory not stack memory.
+2. Whether you System.gc(); or objReference=null; it doesn’t invoke GC until JVM really needs it. But 2nd statement helps GC to collect object quickly.
+3. finalize() is called only when object memory is released from heap.
+
+### JDBC
 Helps to connect and execute query to the database.
 
 1. Statement: To run a query
