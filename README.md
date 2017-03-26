@@ -171,20 +171,21 @@ fruits.set(0, fruits.get(0));//Compile time error
 * Type inference: `List<A> list = new ArrayList<>()` and `list.<A>add(a); list.add(a);` are allowed
 * **Erasure**: During the type erasure process, the Java compiler erases all type parameters and replaces each with its first bound if the type parameter is bounded, or Object if the type parameter is unbounded.
 * Properties
- * Cannot Instantiate Generic Types with Primitive Types
- * Cannot Declare Static Fields of Parameterized Types
- * Cannot Use Casts or instanceof of Parameterized Types
- * Cannot Create Arrays of Parameterized Types 
- * Cannot Create, Catch, or Throw Objects of Parameterized Types
+  * Cannot Instantiate Generic Types with Primitive Types
+  * Cannot Declare Static Fields of Parameterized Types
+  * Cannot Use Casts or instanceof of Parameterized Types
+  * Cannot Create Arrays of Parameterized Types 
+  * Cannot Create, Catch, or Throw Objects of Parameterized Types
 * Wildcards guideines
- * Use the `? extends` wildcard if you need to retrieve object from a data structure
- * Use the `? super` wildcard if you need to put objects in a data structure
- * If you need to do both things, don’t use any wildcard.
+  * Use the `? extends` wildcard if you need to retrieve object from a data structure
+  * Use the `? super` wildcard if you need to put objects in a data structure
+  * If you need to do both things, don’t use any wildcard.
 
 
 ### IO & NIO
 <img src="http://s22.postimg.org/4u4vkcqn5/NIO.png" width="250" align="right" alt="Java NIO"/>
-* **Asynchronous**: a non-CPU paralel operation with the caller(Eg JS XmlHttpRequest)
+
+* **Asynchronous**: a non-CPU paralel operation with the caller(Eg JS XmlHttpRequest).
 * Stream I/O are sequential. Like: printer port, network port etc.
 * **File Descriptor**: A handle (saved as temporary file) to access a file, network socket etc. Number of open files or open network connection equal to number of FDs on disk.
 * **Channel** is a nexus for I/O operations. It represents an open connection to an entity which can perform IO operation. It can be synchronous(blocking) or asynchronous(non-blocking). 
