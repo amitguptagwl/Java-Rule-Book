@@ -152,14 +152,15 @@ Have a look on these [charts](https://github.com/NaturalIntelligence/Java-Rule-B
 Relating to group of similar things; not specific.
 
 <img src="https://docs.oracle.com/javase/tutorial/figures/java/generics-wildcardSubtyping.gif" align="right"/>
-* If B,C extends A, 
- * It means B is-a type of A. A[] a = new B[] is also allowed. But `a` can have instances of B only not of C.
- * `ChildClass<B>` is-a type of `ParentClass<B>`. And `B<SomeClass>` is-a type of `A<SomeClass>`.
- * But `SomeClass<B>` is-not-a type of `SomeClass<A>`. And `B<ChildClass>` is-not-a type of `A<ParentClass>` 
+
+* If B,C extends A 
+  * It means B is-a type of A. A[] a = new B[] is also allowed. But `a` can have instances of B only not of C.
+  * `ChildClass<B>` is-a type of `ParentClass<B>`. And `B<SomeClass>` is-a type of `A<SomeClass>`.
+  * But `SomeClass<B>` is-not-a type of `SomeClass<A>`. And `B<ChildClass>` is-not-a type of `A<ParentClass>` 
 * **Unbounded Wildcard**: `SomeClass<B>` can be assigned to `SomeClass<?>` (`SomeClass<? extends Object>`) .
 * **Upper Bounded Wildcards**(covariance or Narrowing a reference): 
- * `SomeClass<B>` is-a type of `SomeClass<? extends A>`.
- * `ChildClass<B>` is-a type of `ParentClass<? extends A>`
+  * `SomeClass<B>` is-a type of `SomeClass<? extends A>`.
+  * `ChildClass<B>` is-a type of `ParentClass<? extends A>`
 * **Lower Bounded Wildcards**(contravariance or Widening a reference): `? super T` means T and all classes which are parent of T.
 * Multiple bounds: `<T extends A & B>`
 * Capture: At the time generic method call, type should be known;
