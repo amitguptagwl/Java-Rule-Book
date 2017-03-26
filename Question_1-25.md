@@ -22,7 +22,7 @@
 <br/>Ans. As per Common Rules for Concrete class and Interface, No.
 
 **Q5. Whether an interface and abstract class can have main()?**
-<br/>Ans. As per Abstract class rule, it can have main(). As per Interface rule, it can have `public void main()`, static abstract methods are not allowed .
+<br/>Ans. As per Abstract class rule, it can have main(). As per Interface rule, it can have `public void main()`, static abstract methods are not allowed . (But from Java 8 since interface can have static methods, it is allowed)
 
 **Q6. Whether an abstract class can extend**
 * abstract class
