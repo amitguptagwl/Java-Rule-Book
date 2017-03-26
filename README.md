@@ -53,7 +53,7 @@ As per Concrete class rule 5 nested classes can be abstract, static, and static 
 In *Java 8*
 1. Member methods can also be;
    * **default** (a method with default implementation)
-   * :one: **static**
+   * :one: **static** (not inheritble)
 
 #### Common Rules for Concrete class and Interface 
 1. Cannot extend/implement itself or one of its own member types. (If it inherits itself or one of it's child it'll create Cycle.)
