@@ -11,6 +11,7 @@
 2. one to many: my all child classes should fulfill these responsibilities. <br/>one to one : current class should fulfill these responsibilities.
 3. Parent class: type of <br/>Interface : marker, tag
 
+Eg: template pattern
 
 **Q29. Why to make a class final?**
 <br/>Ans. 
