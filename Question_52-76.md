@@ -211,7 +211,7 @@ Where A has no default constructor but parameterized constructor().
 <br />And. As per Enum rule and inheritance, it already extends Enum<T>. That class provides all the enum functionality. 
 
 **Q66. Whether an enum can have abstract methods?**
-<br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract. Ceck [this](http://stackoverflow.com/q/14850842/453767).
+<br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract. Check [this](http://stackoverflow.com/q/14850842/453767).
 
 ### Generics
 
@@ -223,9 +223,10 @@ fruits.add(new Strawberry());
 
 List<Fruit> fruits = new ArrayList<Apple>();//Compilation Error: not allowed
 ```
-<br/>Ans. As per Generics rule, ChildClass<B> is not the subtype of ParentClass<A>. Hence List<Apple> is not sub-type of List<Fruit>.
 
-But a List<A> can contains all elements of type A so Apple,Strawberry are allowed to go in Fruit list.
+Ans. As per Generics rule, ChildClass< B> is not the subtype of ParentClass< A>. Hence List< Apple> is not sub-type of List<Fruit>.
+
+But a List< A> can contains all elements of type A so Apple,Strawberry are allowed to go in Fruit list.
 
 **Q68. Explain below code**
 ```java
@@ -264,7 +265,7 @@ Now in case of generics, by the rule;
 List<Apple> apples = new ArrayList<Apple>();
 //List<Fruit> fruits = apples; //Compile time error
 ```
-ChildClass<B> is not the subtype of ParentClass<A>. Hence it gives compilation error. Next to it;
+ChildClass< B> is not the subtype of ParentClass< A>. Hence it gives compilation error. Next to it;
 
 ```java
 List<? extends Fruit> fruits = apples;
@@ -274,7 +275,7 @@ List<? extends Fruit> fruits = apples;
 Fruit fruit = fruits.get(0);
 ```
 
-`List<? extends A> a` can point to any list<B>, list<C> etc. if B, C,.. are the type of A. But in this case, since you are not sure what `a` is pointing to. So if it is pointing to list<B> type then only items of type B can be added. Hence aadition to such list is not allowed. However `Fruit fruit = fruits.get(0)` will always return an item os type fruit only, it is allwed.
+`List<? extends A> a` can point to any list< B>, list<C> etc. if B, C,.. are the type of A. But in this case, since you are not sure what `a` is pointing to. So if it is pointing to list< B> type then only items of type B can be added. Hence aadition to such list is not allowed. However `Fruit fruit = fruits.get(0)` will always return an item os type fruit only, it is allwed.
 
 In last,
 ```java
