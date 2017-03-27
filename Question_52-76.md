@@ -258,7 +258,7 @@ Fruit[] fruits = apples;
 fruits[0] = new Strawberry();//Runtime Exception
 ```
 
-*fruites* is a reference pointer (say A)  to an object (say B) of type A. But object A (array in this case) can accept items of type B only.
+*fruites* is a reference pointer (say A)  to an array (type of B). Since B extends A, A can be used as reference to B[]. However B[] can accept an element of type B only.
 
 Now in case of generics, by the rule;
 ```java
