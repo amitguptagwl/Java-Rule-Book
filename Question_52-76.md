@@ -78,8 +78,8 @@ System.out.println("->" +s.myMethod());
 
 **Note:**
 
-1. Since finally block runs ever whether any exception occurs or not so return statements inside try &amp; catch will be ignored. But their expression will be executed (like in above example ++i &amp; i++). <br />Since, in above program, finally returns program control to parent caller and return in try block doesn’t get completed so it gives abnormal completion warning.
-2. Above code can give **Unreachable code** compilation error if there is any statement after finally block.
+1. Since finally block runs ever whether any exception occurs or not so return statements inside try &amp; catch will be ignored. But their expression will be executed (like in above example ++i &amp; i++). <br />Since, in below program, finally returns program control to parent caller and return in try block doesn’t get completed so it gives abnormal completion warning.
+2. Below code can give **Unreachable code** compilation error if there is any statement after finally block.
 
 **Q61. What will be the output of below program?**
 ```java
@@ -211,7 +211,7 @@ Where A has no default constructor but parameterized constructor().
 <br />And. As per Enum rule and inheritance, it already extends Enum<T>. That class provides all the enum functionality. 
 
 **Q66. Whether an enum can have abstract methods?**
-<br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract
+<br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract. Ceck [this](http://stackoverflow.com/q/14850842/453767).
 
 **Generics**
 
