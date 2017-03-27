@@ -307,7 +307,7 @@ public static int findFirstGreaterThan(Comparable[] at, Comparable elem) {
     // ...
 }
 ```
-**Q71. Justify bewlow code snippet**
+**Q71. Justify below code snippet**
 ```java
 SomeClass<?> someObj = new SomeClass<B>();
 //but
