@@ -213,7 +213,7 @@ Where A has no default constructor but parameterized constructor().
 **Q66. Whether an enum can have abstract methods?**
 <br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract. Ceck [this](http://stackoverflow.com/q/14850842/453767).
 
-**Generics**
+### Generics
 
 **Q67. Explain below code**
 ```java
@@ -223,7 +223,9 @@ fruits.add(new Strawberry());
 
 List<Fruit> fruits = new ArrayList<Apple>();//Compilation Error: not allowed
 ```
-<br/>Ans. As per Generics rule, List<Apple> is not sub-type of List<Fruit>. But since Apple,Strawberry are type of Fruit List.add() allows any type of Fruit.
+<br/>Ans. As per Generics rule, ChildClass<B> is not the subtype of ParentClass<A>. Hence List<Apple> is not sub-type of List<Fruit>.
+
+But a List<A> can contains all elements of type A so Apple,Strawberry are allowed to go in Fruit list.
 
 **Q68. Explain below code**
 ```java
@@ -246,10 +248,41 @@ apples.add(new Fruit()); //Compile time error
 apples.add(new Apple()); 
 
 ```
-<br />Ans. By Generic rules, `List<Apple>` is subtype of  `List<? extends Fruit>` so list of apples can be assigned to list of fruits. 
-<br />But since list of fruits can point to list of any type of fruits, `fruits.get()` doesn't gurantee what will come out but it is sure that it'll a fruit. Hence only `Fruit fruit = fruits.get(0)` is allowed.
-<br />Now, similarly, since list of fruits can point to list of any type of fruits, adding particular type of fruit may be wrong. So suppose you try to add Apple but list of fruits is pointing to list of Strawberries. So you can not add any type of fruite. Now with the same reason, you can't add `new Fruit()` because parent class object can't be assigned to child type reference.
+<br />Ans. 
+For
 
+```java
+Apple[] apples = new Apple[1];
+Fruit[] fruits = apples;
+fruits[0] = new Strawberry();//Runtime Exception
+```
+
+*fruites* is a reference pointer (say A)  to an object (say B) of type A. But object A (array in this case) can accept items of type B only.
+
+Now in case of generics, by the rule;
+```java
+List<Apple> apples = new ArrayList<Apple>();
+//List<Fruit> fruits = apples; //Compile time error
+```
+ChildClass<B> is not the subtype of ParentClass<A>. Hence it gives compilation error. Next to it;
+
+```java
+List<? extends Fruit> fruits = apples;
+//fruits.add(new Strawberry()); //Compile time error
+//fruits.add(new Fruit()); //Compile time error
+//fruits.add(new Apple()); //Compile time error
+Fruit fruit = fruits.get(0);
+```
+
+`List<? extends A> a` can point to any list<B>, list<C> etc. if B, C,.. are the type of A. But in this case, since you are not sure what `a` is pointing to. So if it is pointing to list<B> type then only items of type B can be added. Hence aadition to such list is not allowed. However `Fruit fruit = fruits.get(0)` will always return an item os type fruit only, it is allwed.
+
+In last,
+```java
+List<? super Apple> apples = new ArrayList<Fruit>();
+apples.add(new Strawberry()); //Compile time error
+apples.add(new Fruit()); //Compile time error
+apples.add(new Apple()); 
+```
 <br />In case of super, list of fruits or list of objects can be assigned to list of apples.
 <br />But while reading, you can't guarantee what will come out. However it is guaranteed to be Object.
 <br />While adding, since list of apples can point either list of apples itself or the list of it's super classes so any object of Apple or it's subtype can be added. But instance of Fruit or it's other type can't be added.
