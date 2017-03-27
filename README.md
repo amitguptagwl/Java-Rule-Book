@@ -154,8 +154,8 @@ Relating to group of similar things; not specific.
 <img src="https://docs.oracle.com/javase/tutorial/figures/java/generics-wildcardSubtyping.gif" align="right"/>
 
 * If B,C extends A 
-  * It means B is-a type of A. A[] a = new B[] is also allowed. But `a` can have instances of B only not of C.
-  * `ChildClass<B>` is-a type of `ParentClass<B>`. And `B<SomeClass>` is-a type of `A<SomeClass>`.
+  * B is-a type of A.
+  * `ChildClass<B>` is-a type of `ParentClass<B>`.
   * But `SomeClass<B>` is-not-a type of `SomeClass<A>`. And `B<ChildClass>` is-not-a type of `A<ParentClass>` 
 * **Unbounded Wildcard**: `SomeClass<B>` can be assigned to `SomeClass<?>` (`SomeClass<? extends Object>`) .
 * **Upper Bounded Wildcards**(covariance or Narrowing a reference): 
