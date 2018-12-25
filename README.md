@@ -1,11 +1,12 @@
 # Java Rule Book
-Basic concepts of Java to answer any question about how Java works specially in job interviews. With combining multiple rules you can answer many java question
+Basic concepts of Java to answer any question about how Java works especially in job interviews. By combining multiple rules you can answer many java question
 
 **This book is suitable only for people who has already worked in Java**
 
 **Feel free to correct any rule or to suggest any correction needed.**
 
-[![Donate to author](https://www.paypalobjects.com/webstatic/en_US/btn/btn_donate_92x26.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQJAX48SPUKNC) (to buy time that I can use to maintain my other open source projects, and free tutorials and to participate in other's open source projects))
+<a href="https://www.patreon.com/bePatron?u=9531404" data-patreon-widget-type="become-patron-button"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patron!" width="200" /></a>
+<a href="https://www.paypal.me/amitkumarguptagwl"> <img src="https://funcards.github.io/match-it/static/img/support_paypal.svg" alt="Stubmatic donate button" width="200"/></a>
 
 ## Rules (upto Java 7)
 
