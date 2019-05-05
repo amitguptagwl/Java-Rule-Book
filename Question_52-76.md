@@ -213,6 +213,9 @@ Where A has no default constructor but parameterized constructor().
 **Q66. Whether an enum can have abstract methods?**
 <br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract. Check [this](http://stackoverflow.com/q/14850842/453767).
 
+**Q . Should I use class or Enum for Directions**
+<br />Ans. Considering, directions has fixed 4 types: North, East, West, South. There is no point to create multiple instances of any of directions. So all the Directions types are singleton. Hence, Using enum would be right choice.
+
 ### Generics
 
 **Q67. Explain below code**
