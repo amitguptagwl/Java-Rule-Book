@@ -1,7 +1,7 @@
 # Java Rule Book
 Basic concepts of Java to answer any question about how Java works especially in job interviews. By combining multiple rules you can answer many java question
 
-**This book is suitable only for people who has already worked in Java**
+**This book is suitable only for people who have already worked in Java**
 
 **Feel free to correct any rule or to suggest any correction needed.**
 
