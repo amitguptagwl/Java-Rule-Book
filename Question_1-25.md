@@ -240,6 +240,9 @@ public class Main{
     }
 }
 ```
+
+![](imgs/StatcNested.png)
+
 **Q17. Can a nested class be abstract or static abstract?**
 **Ans**. As per Nested class Rule,yes.
 
