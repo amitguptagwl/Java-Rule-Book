@@ -54,11 +54,12 @@ System.out.println(a == b);
 String c = "text";
 System.out.println(a == c);
 ```
-<br/>Ans.
-<br/>false
-<br/>true
-<br/>true
-
+**Ans**.
+```
+false
+true
+true
+```
 == is used to check the equality of reference. As per String literal rules, Literal strings in any class of any package represent references to the same String object. Hence a,c are pointing to same object. intern() return the object from String pool. So a,b,c are equal in last.
 
 **Q84. What will be the output of following program?**

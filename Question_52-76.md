@@ -1,20 +1,20 @@
 **Q52. If B extends A and you create object of B where default constructor of A throws some exception then whether object of B would be created?**
-<br />Ans. As per Inheritance rule, child class needs to call `super()` on first line of it's constructor. But as per Exception rule, it needs to be handled or throwwn. So child class constructor will have to throw it again. [See](http://stackoverflow.com/a/28678358/453767). If there is not runtime exception then the object will be created.
+**Ans**. As per Inheritance rule, child class needs to call `super()` on first line of it's constructor. But as per Exception rule, it needs to be handled or thrown. So child class constructor will have to throw it again. [See](http://stackoverflow.com/a/28678358/453767). If there is not runtime exception then the object will be created.
 
 **Q53. If C extends B extends A and you create C object by its parameterized constructor then whether constructor of A and B would be called?**
-<br />Ans. As per Inheritance rule, yes.
+**Ans**. As per Inheritance rule, yes.
 
 **Q54. Is this scenario is possible? B extends A where A and B both have a parameterized constructor.**
-<br />Ans. As per Inheritance rule, child class need to call super class constructor otherwise compiler adds empty super() call. Since parent class have parameterized constructor, this call will fails. However if child can call parent parameterized constructor to make it successful.
+**Ans**. As per Inheritance rule, child class need to call super class constructor otherwise compiler adds empty super() call. Since parent class have parameterized constructor, this call will fails. However if child can call parent parameterized constructor to make it successful.
 
 **Q55. Whether super.super or this.this is allowed?**
-<br />Ans. this.this is senseless. this.super is not allowed. super.super is not allowed because son inherits properties of father only while the father inherits properties of his father. So if C extends B extends A then B can access all visible members of A. Thus C can access members of A through super only. It doesn’t require super.super.
+**Ans**. this.this is senseless. this.super is not allowed. super.super is not allowed because son inherits properties of father only while the father inherits properties of his father. So if C extends B extends A then B can access all visible members of A. Thus C can access members of A through super only. It doesn’t require super.super.
 
 **Q56. Can I have a final member field in a class which is not initialized anywhere in the class?**
-<br />Ans. As per Final rules, No. It gives compilation error.
+**Ans**. As per Final rules, No. It gives compilation error.
 
 **Q57. A method() accepts String str as parameter then what will str.equals(null) output if I call method(null)?**
-<br />Ans. When you set str=null, it free the object it is referring to. So calling any method on this will cause NullPointerException.
+**Ans**. When you set str=null, it free the object it is referring to. So calling any method on this will cause NullPointerException.
 
 **Q58. If**
 ```
@@ -30,13 +30,14 @@ String s2 = new String(“Amit”);
 5. s1.equals(s2);
 6. s1 == s2
 
-<br/>Ans. As per Final rule, s1 will point to memory location where “Amit” resides. So 2nd statements is true. But 4th is false.
-<br/>As per String rule, 1,3,5 are true. and 6 is false.
+**Ans**. 
+* As per Final rule, s1 will point to memory location where “Amit” resides. So 2nd statements is true. But 4th is false.
+* As per String rule, 1,3,5 are true. and 6 is false.
 
 **Exception Handling**
 
 **Q59. If**
-```
+```java
 try{
 	String n = null;
 	System.out.println(n.equals(null));
@@ -49,10 +50,10 @@ try{
 ```
 **What would be the output?**
 
-<br/>Ans. As per Exception rule, onle 1 catch block can be called. Since `Exception` is parent of all type of exceptions. It'll be always called. Hence compile time error "Unreachable catch block for NullPointerException".
+**Ans**. As per Exception rule, only 1 catch block can be called. Since `Exception` is parent of all type of exceptions. It'll be always called. Hence compile time error "Unreachable catch block for NullPointerException".
 
 **Q60. If**
-```
+```java
 public int myMethod() {
 	int i=0;
 	try{
@@ -71,11 +72,12 @@ System.out.println("->" +s.myMethod());
 ```
 
 **What would be the output of above code?**
-<br />Ans. Above code will output
-<br />0
-<br />0
-<br />4
-
+**Ans**. Above code will output
+```
+0
+0
+4
+```
 **Note:**
 
 1. Since finally block runs ever whether any exception occurs or not so return statements inside try &amp; catch will be ignored. But their expression will be executed (like in above example ++i &amp; i++). <br />Since, in below program, finally returns program control to parent caller and return in try block doesn’t get completed so it gives abnormal completion warning.
@@ -100,10 +102,11 @@ public static int method(){
 
 System.out.println(method());
 ```
-<br />Ans. 
-<br />4
-<br />5
-
+**Ans**. 
+```
+4
+5
+```
 **Q62. What will be the output of below program?**
 ```java
 public static int method(){
@@ -122,10 +125,11 @@ public static int method(){
 
 System.out.println(method());
 ```
-<br />Ans. 
-<br />4
-<br />3
-
+**Ans**. 
+```
+4
+3
+```
 
 **Serialization**
 
@@ -180,7 +184,7 @@ Grand Parent
 
 **Which constructors will be called by Deserialization?**
 
-<br />Ans. As per serialization rule 3,
+**Ans**. As per serialization rule 3,
 
 1. No constructor call. Because deserialization finds serializable class in starting
 2. A()
@@ -197,7 +201,7 @@ Grand Parent
 Where A has no default constructor but parameterized constructor().
 
 **Which constructors will be called by Deserialization?**
-<br />Ans. 
+**Ans**. 
 
 1. No constructor call. Because deserialization finds serializable class in starting
 2. It’ll give compilation error since, as per Inheritance rule, parent class always must have default constructor or child class constructor must have explicit call to parameterized constructor of parent class.
@@ -211,10 +215,10 @@ Where A has no default constructor but parameterized constructor().
 <br />And. As per Enum rule and inheritance, it already extends Enum<T>. That class provides all the enum functionality. 
 
 **Q66. Whether an enum can have abstract methods?**
-<br />Ans. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract. Check [this](http://stackoverflow.com/q/14850842/453767).
+**Ans**. Yes. Since all the instances declared inside the enum can have body of anonymous class. So they have to override abstract. Check [this](http://stackoverflow.com/q/14850842/453767).
 
 **Q . Should I use class or Enum for Directions**
-<br />Ans. Considering, directions has fixed 4 types: North, East, West, South. There is no point to create multiple instances of any of directions. So all the Directions types are singleton. Hence, Using enum would be right choice.
+**Ans**. Considering, directions has fixed 4 types: North, East, West, South. There is no point to create multiple instances of any of directions. So all the Directions types are singleton. Hence, Using enum would be right choice.
 
 ### Generics
 
@@ -252,7 +256,7 @@ apples.add(new Fruit()); //Compile time error
 apples.add(new Apple()); 
 
 ```
-<br />Ans. 
+**Ans**. 
 For
 
 ```java
@@ -355,7 +359,7 @@ someObj.someMethod(null);
 Ans. ? represents no type. So A,B are definetely not type of ?. Hence only null is allowed.
 
 **Q72. What is the advantage of code given in Q69?**
-<br/>Ans. If we write the above code in following way;
+**Ans**. If we write the above code in following way;
 ```java
 SomeClass<B> someBObj = new SomeClass<B>();
 someBObj.someMethod(new B());

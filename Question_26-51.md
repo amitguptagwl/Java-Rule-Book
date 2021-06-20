@@ -1,11 +1,11 @@
 **Q26. Can a class have static final methods?**
-<br />Ans. Since both are not contradictory, so yes.
+**Ans**. Since both are not contradictory, so yes.
 
 **Q27. Can an abstract class implementing an interface have same abstract method declared in interface?**
-<br />Ans. Yes by rules.
+**Ans**. Yes by rules.
 
 **Q28. Why and when to make a class abstract?**
-<br/>Ans.
+**Ans**.
 
 1. As Abstract class = Interface + Concrete class, so when we want the child class to implement some responsibilities as well as there is something which can be implemented in the parent class, like something common among all children then abstract class can be used. However, this can also be achieved by extending one concrete class and implementing an interface by all the children. But in this case, the parent is not asking or rather forcing a child to fulfill some responsibilities. This becomes optional.
 2. one to many: my all child classes should fulfill these responsibilities. <br/>one to one : current class should fulfill these responsibilities.
@@ -14,49 +14,48 @@
 Eg: template pattern
 
 **Q29. Why to make a class final?**
-<br/>Ans. 
-<br/>To stop inheritance: "The interaction of inherited classes with their parents can be surprising and unpredicatable if the ancestor wasn't designed to be inherited from."
-<br/>"to favour composition over inheritance" - Effective Java
-<br/>It may not be useful if you are writing internal code. But it can be useful when writing external libraries.
-<br/> It guarantees immutability.
+**Ans**. 
+* To stop inheritance: "The interaction of inherited classes with their parents can be surprising and unpredicatable if the ancestor wasn't designed to be inherited from."
+* "to favour composition over inheritance" - Effective Java
+* It may not be useful if you are writing internal code. But it can be useful when writing external libraries.
+* It guarantees immutability.
 
 
 **Q30. Whether a final class can have final or static methods?**
-<br />Ans. By Concrete class rule it is possible. But there is no sens to have final methods in final class. Static is fine.
+**Ans**. By Concrete class rule it is possible. But there is no sens to have final methods in final class. Static is fine.
 
 **Q31. Whether you can change field members value of final object?**
-<br />Ans. Making an object final means it's reference can't be changed, but the value of field members can be.
+**Ans**. Making an object final means it's reference can't be changed, but the value of field members can be changed.
 
 **Q32. What is the advantage of creating a final variables?**
-<br />Ans:
-
-* It guarantees immutability which is supported by annonymous classes, String, and other places.
-* JVm assigns single memory location for same value variables.
-* It gives clarity that this variable is read only. and saves you from changing variable value accidentally.
+**Ans**:
+* **Immutability**: It guarantees immutability which is supported by annonymous classes, String, and other places.
+* **Performance**: JVM assigns single memory location for same value variables.
+* **Readability**: It gives clarity that this variable is read only. and saves you from changing variable value accidentally.
 
 **Q33. What is the advantage of creating a final parameter for a method where parameter is never modified in method?**
-<br />Ans. Read Q32.
+**Ans**. Read Q32.
 
 **Q34. What is the advantage of private/protected constructor?**
-<br />Ans. To implement singleton pattern, or pooling/caching pattern.
+**Ans**. To implement singleton pattern, or pooling/caching pattern.
 
 **Q35. I am calling System.gc() or objReference=null. Whether it will call finalize()?**
-<br />Ans. As per GC rule, it is not certain.
+**Ans**. As per GC rule, it is not certain.
 
 **Q36. How can you pull an object out collected by GC?**
-<br />Ans. Do some operation on object in finalize() of that class.
+**Ans**. Do some operation on object in finalize() of that class.
 
 **Q37. Whether an unclosed stream/connection may cause memory leak?**
-<br />Ans. No. Connections are treated as file in OS. So there can be resource leak but not the memory leak.
+**Ans**. No. Connections are treated as file in OS. So there can be resource leak but not the memory leak.
 
 **Q38. Can you serialize a class having non-serialize parent? What if a class has reference of non-serialize class?**
-<br />Ans. Yes if it is marked serializable. Although parent class will not be serialize but it’ll not give any error. During deserialization, the fields of non-serializable classes will be initialized using the public or protected no-arg constructor of the class.
+**Ans**. Yes if it is marked serializable. Although parent class will not be serialize but it’ll not give any error. During deserialization, the fields of non-serializable classes will be initialized using the public or protected no-arg constructor of the class.
 
 **Q39. Whether a class can have static private fields? Is there any advantage to create them?**
-<br />Ans. Yes. Static private fields will be shared among all instances but can’t be shared by class name directly. They can be used to keep some common internal information like instance counter.
+**Ans**. Yes. Static private fields will be shared among all instances but can’t be shared by class name directly. They can be used to keep some common internal information like instance counter.
 
 **Q40. Can we declare local variable as static? Explain.**
-<br />Ans. No. Because if a method is non-static, it can’t have static local variables. And if it is static there is a single instance of this method so static variable are senseless. (All variables and parameters of static method are static. And a static method can call only static methods.)
+**Ans**. No. Because if a method is non-static, it can’t have static local variables. And if it is static there is a single instance of this method so static variable are senseless. (All variables and parameters of static method are static. And a static method can call only static methods.)
 
 ###Multithreading
 Check [Cookie Maker](https://github.com/NaturalIntelligence/Practical-Java/tree/master/Concurrency/src/os/nushi/concurrency/cookiemaking2) problem to improve your understanding in following;
@@ -75,10 +74,10 @@ Check [Cookie Maker](https://github.com/NaturalIntelligence/Practical-Java/tree/
 12. Different state of threads
 
 **Q41. Whether thread t1 &amp; t2, running on 2 separate instances of class A, can access synchronized method() of class A at same time?**
-<br />Ans. As per Threading rule, yes. (due to 2 separate instances, there is nothing being shared)
+**Ans**. As per Threading rule, yes. (due to 2 separate instances, there is nothing being shared)
 
 **Q42. Whether thread t1 &amp; t2, running on 2 separate instances of class A, can access separate synchronized methods of class A at same time where 1 of them is static method?**
-<br />Ans. As per Threading rule, no. (Since static method is sharable between both instances, second thread will wait until first one comes out from the monitor.)
+**Ans**. As per Threading rule, no. (Since static method is sharable between both instances, second thread will wait until first one comes out from the monitor.)
 
 **Q43. For following program, if thread A and thread B runs at same time on same instance where A calls acquire(), and B calls modify(), whether B will modify value of `a`**
 
@@ -97,7 +96,7 @@ public class SynchoTest {
 }
 ```
 
-<br />Ans. By rules, yes. Because when thread B calls modify(), it doesn't meet to any monitor. However if both threads call acquire() then second thread will wait.
+**Ans**. By rules, yes. Because when thread B calls modify(), it doesn't meet to any monitor. However if both threads call acquire() then second thread will wait.
 
 **Q44.Can following program lead deadlock?**
 
@@ -117,7 +116,7 @@ public synchronized void modify() throws Exception{
 }
 ```
 
-<br />Ans. Yes.
+**Ans**. Yes.
 
 ```java
 public synchronized void acquire() throws Exception{ //lock the class object
@@ -195,16 +194,16 @@ public synchronized void method(){
     }
 }
 ```
-<br />Ans. By the rules, last 2 methods are correct.
+**Ans**. By the rules, last 2 methods are correct.
 
 **Q46. Is it possible to start a thread twice?**
-<br/>Ans: No by rules.
+**Ans**: No by rules.
 
 **Q47. Is it possible to convert a normal user thread into a daemon thread after it has been started?**
-<br/>Ans: No, you need to call setDaemon() before thread starts.
+**Ans**: No, you need to call setDaemon() before thread starts.
 
 **Q48. How do we wait in the parent thread for the termination of the child thread?**
-<br/>Ans: join()
+**Ans**: join()
 
 **Q59. Have a look on below program to create Daemon thread;**
 ```java
@@ -239,14 +238,14 @@ public synchronized void method(){
 2. What will be output of above program, if we remove `join`?
 3. What will be output of above program, if we remove `join`, and `setDaemon(true)` both?
 
-<br/>Ans:
+**Ans**:
 
 1. The main thread will wait for dameon thread to be completed due to `join()` call. But since it is running in loop, `isAlive()` call never be happen.
 2. It'll output `Runnable` then `true`. Now since there is noting to do in main thread or rather there is no other user thread running, dameon thread will be killed by JVM. Hence the above program will not print the state anymore.
 3. It'll output `Runnable` then `true`. Since this is not dameon but user thread, JVM will wait it to be completed. Hence it's state `Runnable` will keep printing for forever until something interrupt it.
 
 **Q50. Can primitive values be used for intrinsic locks?**
-<br/>Ans: No because this operation is already atomic.
+**Ans**: No because this operation is already atomic.
 
 **Q51. Can a constructor be synchronized?**
-<br/>Ans: No, because synchronization is needed when same memory location can be accessed by multiple threads. In case of constructor, everytime new object will be created.
+**Ans**: No, because synchronization is needed when same memory location can be accessed by multiple threads. In case of constructor, everytime new object will be created.
