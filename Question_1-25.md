@@ -1,14 +1,33 @@
 **Q1. A parent class has 2 variables final int a = 20; static int b; and child class has 2 variables with same name int a, b;.**
-<br/>Can I change value of a? 
-<br/>What would be the value of b among all instances of child class?
+```java
+class A{
+  final int a = 20;
+  static int b;
+}
+class B extends A{
+ int a,b;
+}
+
+public class Main{
+    public static void main(String[] args) {
+        B b = new B();
+        b.a = 30;
+        b.b = 30;
+    }
+}
+
+```
+* Can I change value of a? 
+* What would be the value of b among all instances of child class?
 
 **Ans.**
-<br/>As per Inheritance rule or Concrete class rule, variables a,b are different variables than super.a, super.b. So their values can be changed. When I say childObj.b, the closest declaration will be used i.e. non-static b.
+As per 
+1. Inheritance rule or Concrete class rule, variables a,b are different variables than super.a, super.b. So their values can be changed. When I say childObj.b, the closest declaration will be used i.e. non-static b.
 
 **Q2. An interface has a variable int a = 20;**
-<br/>Can child have member with same name?
-<br/>Can child class modify a in its constructor?
-<br/>Whether child class member a would become final?
+* Can child have member with same name?
+* Can child class modify a in its constructor?
+* Whether child class member a would become final?
 
 **Ans.**
 <br/>As per Inheritance rule or Concrete class, variable a in child class and interface are different. So child class have variable with 'a' name.
