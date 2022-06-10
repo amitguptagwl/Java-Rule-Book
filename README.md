@@ -5,8 +5,7 @@ Basic concepts of Java to answer any question about how Java works especially in
 
 **Feel free to correct any rule or to suggest any correction needed.**
 
-<a href="https://www.patreon.com/bePatron?u=9531404" data-patreon-widget-type="become-patron-button"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patron!" width="200" /></a>
-<a href="https://www.paypal.me/amitkumarguptagwl"> <img src="https://funcards.github.io/match-it/static/img/support_paypal.svg" alt="Stubmatic donate button" width="200"/></a>
+<a href="https://paypal.me/naturalintelligence"> <img src="https://github.com/NaturalIntelligence/fast-xml-parser/raw/master/static/img/support_paypal.svg" alt="donate button" width="200"/></a>
 
 ## Rules (upto Java 7)
 
