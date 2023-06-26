@@ -7,6 +7,8 @@ Basic concepts of Java to answer any question about how Java works especially in
 
 <a href="https://paypal.me/naturalintelligence"> <img src="https://github.com/NaturalIntelligence/fast-xml-parser/raw/master/static/img/support_paypal.svg" alt="donate button" width="200"/></a>
 
+> You can also read [kungfu java concepts](solothought.com/tutorial/kungfu-java-concepts/) to understand Java concepts up to Java SE17 in more interactive way through a story and illustrations.
+
 ## Rules (upto Java 7)
 
 ### Final :no_entry_sign:
